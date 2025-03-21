@@ -1,0 +1,6 @@
+*.fbx filter=lfs diff=lfs merge=lfs -text
+*.Fbx filter=lfs diff=lfs merge=lfs -text
+Assets/Models/CC[[:space:]]Characters/actual[[:space:]]teddy[[:space:]]model/Teddy_Cosmo.fbx filter=lfs diff=lfs merge=lfs -text
+Assets/Models/CC[[:space:]]Characters/actual[[:space:]]teddy[[:space:]]model/teddy_finalised.fbx filter=lfs diff=lfs merge=lfs -text
+Assets/Models/CC[[:space:]]Characters/actual[[:space:]]teddy[[:space:]]model/Teddy_Cosmo.Fbx filter=lfs diff=lfs merge=lfs -text
+Assets/Models/CC[[:space:]]Characters/actual[[:space:]]teddy[[:space:]]model/teddy_finalised.Fbx filter=lfs diff=lfs merge=lfs -text
