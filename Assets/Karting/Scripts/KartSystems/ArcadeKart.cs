@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.VFX;
+using UnityEngine.Events;
 
 namespace KartGame.KartSystems
 {
@@ -181,6 +182,9 @@ namespace KartGame.KartSystems
         bool m_HasCollision;
         bool m_InAir = false;
 
+        public UnityEvent Land;
+        public UnityEvent LeaveGround;
+
         public void AddPowerup(StatPowerup statPowerup) => m_ActivePowerupList.Add(statPowerup);
         public void SetCanMove(bool move) => m_CanMove = move;
         public float GetMaxSpeed() => Mathf.Max(m_FinalStats.TopSpeed, m_FinalStats.ReverseSpeed);
@@ -314,7 +318,18 @@ namespace KartGame.KartSystems
             {
                 MoveVehicle(Input.Accelerate, Input.Brake, Input.TurnInput);
             }
+
             GroundAirbourne();
+
+            if (m_PreviousGroundPercent <= 0 && GroundPercent > 0)
+            {
+                Land.Invoke();
+            }
+
+            if (m_PreviousGroundPercent > 0 && GroundPercent <= 0)
+            {
+                LeaveGround.Invoke();
+            }
 
             m_PreviousGroundPercent = GroundPercent;
 
