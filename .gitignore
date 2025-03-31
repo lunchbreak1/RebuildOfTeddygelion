@@ -1,4 +1,5 @@
 /.vsconfig
+/.vs
 /Assembly-CSharp.csproj
 /Assembly-CSharp.Player.csproj
 /Assembly-CSharp-Editor.csproj
@@ -10,6 +11,7 @@
 /KartGame.Player.csproj
 /Library/*
 /Logs/*
+/obj
 /RebuildOfTeddygelion.sln
 /Temp/*
 /Unity.*
