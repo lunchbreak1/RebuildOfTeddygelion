@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.soupday.cc3_unity_tools": {
+      "version": "https://github.com/soupday/cc_unity_tools_HDRP.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.render-pipelines.high-definition": "10.5.0"
+      },
+      "hash": "d634382c4bfd293b3bd9f0a9f1a6beb1654c4d57"
+    },
     "com.unity.burst": {
       "version": "1.8.17",
       "depth": 1,
