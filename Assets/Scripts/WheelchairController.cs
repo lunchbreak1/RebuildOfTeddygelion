@@ -17,11 +17,21 @@ public class WheelchairController : MonoBehaviour
     [Tooltip("Player input")]
     public Vector2 moveDirection;
 
+    [Tooltip("The amount the player has spun around in the air in degrees.")]
+    public float airXRotation = 0;
+
+    [Tooltip("The amount the player has flipped in the air in degrees.")]
+    public float airYRotation = 0;
+
     private Animator anim;
+
+    private TrickManager trickManager;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
+        trickManager = GetComponent<TrickManager>();
+        trickManager.SetTurnSpeed(turnSpeed);
     }
 
     /// <summary>
@@ -30,6 +40,7 @@ public class WheelchairController : MonoBehaviour
     public void OnLand()
     {
         grounded = true;
+        trickManager.EndTrick();
     }
 
     /// <summary>
@@ -38,6 +49,7 @@ public class WheelchairController : MonoBehaviour
     public void OnJump()
     {
         grounded = false;
+        trickManager.StartTrick();
     }
 
     void Update()
@@ -71,6 +83,4 @@ public class WheelchairController : MonoBehaviour
         anim.SetFloat("Horizontal", horizontal);
         anim.SetFloat("Vertical", vertical);
     }
-
-
 }
