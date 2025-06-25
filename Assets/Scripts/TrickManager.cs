@@ -14,7 +14,10 @@ public class TrickManager : MonoBehaviour
     public float point360;
     public float pointFlip;
     public float pointBackFlip;
-    float turnSpeed;
+    float turnSpeedX;
+    float turnSpeedY;
+    public float airTurnSpeedX;
+    public float airTurnSpeedY;
 
     float totalPoints;
 
@@ -35,14 +38,16 @@ public class TrickManager : MonoBehaviour
         HideTrickCounter();
     }
 
-    public void SetTurnSpeed(float speed)
+    public void SetTurnSpeed(float speedX, float speedY)
     {
-        turnSpeed = speed;
+        turnSpeedX = speedX;
+        turnSpeedY = speedY;
     }
 
     public void StartTrick()
     {
         grounded = false;
+        SetTurnSpeed(airTurnSpeedX, airTurnSpeedY);
     }
 
     public void EndTrick()
@@ -72,9 +77,9 @@ public class TrickManager : MonoBehaviour
     {
         if(!grounded)
         {
-            airXRotation += moveDirection.x * turnSpeed;
+            airXRotation += moveDirection.x * turnSpeedX;
 
-            airYRotation += moveDirection.y * turnSpeed;
+            airYRotation += moveDirection.y * turnSpeedY;
 
             PerformTrick();
         }

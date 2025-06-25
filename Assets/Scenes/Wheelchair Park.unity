@@ -4857,7 +4857,8 @@ MonoBehaviour:
   point360: 100
   pointFlip: 100
   pointBackFlip: 100
-  turnSpeed: 0
+  airTurnSpeedX: 30
+  airTurnSpeedY: 20
   scoreCounter: {fileID: 1150302641}
   trickCounter: {fileID: 956859568}
   airXRotation: 0

@@ -31,7 +31,7 @@ public class WheelchairController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         trickManager = GetComponent<TrickManager>();
-        trickManager.SetTurnSpeed(turnSpeed);
+        trickManager.SetTurnSpeed(turnSpeed, turnSpeed);
     }
 
     /// <summary>
@@ -41,6 +41,7 @@ public class WheelchairController : MonoBehaviour
     {
         grounded = true;
         trickManager.EndTrick();
+        trickManager.SetTurnSpeed(turnSpeed, turnSpeed);
     }
 
     /// <summary>
