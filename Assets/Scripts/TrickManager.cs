@@ -14,7 +14,7 @@ public class TrickManager : MonoBehaviour
     public float point360;
     public float pointFlip;
     public float pointBackFlip;
-    public float turnSpeed;
+    float turnSpeed;
 
     float totalPoints;
 
@@ -88,6 +88,10 @@ public class TrickManager : MonoBehaviour
     // Update is called once per frame
     void HideTrickCounter()
     {
+        threeSixties = 0;
+        flips = 0;
+        backFlips = 0;
+        totalPoints = 0;
         trickCounter.text = "";
     }
 
