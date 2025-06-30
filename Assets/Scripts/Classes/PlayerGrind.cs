@@ -30,15 +30,7 @@ public class PlayerGrind : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
         charController = GetComponent<WheelchairController>();
     }
-    /*public void HandleJump(InputAction.CallbackContext context)
-    {
-        jump = Convert.ToBoolean(context.ReadValue<float>());
-    }
-    public void HandleMovement(InputAction.CallbackContext context)
-    {
-        Vector2 rawInput = context.ReadValue<Vector2>();
-        input.x = rawInput.x;
-    }*/
+
     private void FixedUpdate()
     {
         if (onRail) //If on the rail, move the player along the rail

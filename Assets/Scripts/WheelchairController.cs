@@ -57,7 +57,7 @@ public class WheelchairController : MonoBehaviour
     {
         // Get horizontal and vertical input
         float horizontal = Input.GetAxisRaw("Horizontal");  // A/D or Left/Right arrow keys
-        float vertical = Input.GetAxisRaw("Vertical");      // W/S or Up/Down arrow keys
+        float vertical = Input.GetAxisRaw("Accelerate");      // W/S or Up/Down arrow keys
 
         // Combine into a Vector2
         moveDirection = new Vector2(horizontal, vertical);
