@@ -5852,6 +5852,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6140229310052121166, guid: 82169b6efa7cfd844868115ac293dc92,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6140229310052121166, guid: 82169b6efa7cfd844868115ac293dc92,
+        type: 3}
       propertyPath: verticalAxis
       value: Accelerate
       objectReference: {fileID: 0}
