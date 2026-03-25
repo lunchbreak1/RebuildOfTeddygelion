@@ -145,8 +145,12 @@ public class PlayerGrind : MonoBehaviour
         //and uses it to give you a local position, a tangent (forward), and up
         float3 pos, forward, up;
         SplineUtility.Evaluate(currentRailScript.railSpline.Spline, normalisedTime, out pos, out forward, out up);
+
+        Debug.Log("forward: " + forward + ", transform.forward: " + transform.forward);
+
         //Calculate the direction the player is going down the rail
         currentRailScript.CalculateDirection(forward, transform.forward);
+        
         //Set player's initial position on the rail before starting the movement code.
         transform.position = splinePoint + (transform.up * heightOffset);
     }
