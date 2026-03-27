@@ -24,11 +24,13 @@ public class PlayerGrind : MonoBehaviour
     [SerializeField] Rail currentRailScript;
     Rigidbody playerRigidbody;
     WheelchairController charController;
+    Rigidbody body;
 
     private void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
         charController = GetComponent<WheelchairController>();
+        body = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -107,6 +109,7 @@ public class PlayerGrind : MonoBehaviour
             /*When the player hits the rail, onRail is set to true, the current rail script is set to the
              *rail script of the rail the player hits. Then we calculate the player's position on that rail.
             */
+            
             onRail = true;
             currentRailScript = hit.gameObject.GetComponent<Rail>();
             CalculateAndSetRailPosition();
@@ -122,6 +125,7 @@ public class PlayerGrind : MonoBehaviour
         {
             onRail = true;
             CalculateAndSetRailPosition();
+            body.isKinematic = true;
         }
     }
 
@@ -161,6 +165,7 @@ public class PlayerGrind : MonoBehaviour
         onRail = false;
         currentRailScript = null;
         transform.position += transform.forward * 1;
+        body.isKinematic = false;
 
         Debug.Log("Throw off the rail!");
         //Message.Write("");
