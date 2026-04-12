@@ -76,7 +76,7 @@ public class WheelchairController : MonoBehaviour
         {
             transform.RotateAround(transform.position, Vector3.up, moveDirection.x * turnSpeed);
 
-            transform.RotateAround(transform.position, transform.right, moveDirection.y * turnSpeed);
+            transform.RotateAround(transform.position, Vector3.right, moveDirection.y * turnSpeed);
         }
     }
 
