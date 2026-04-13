@@ -189,9 +189,12 @@ public class TrickManager : MonoBehaviour
 
     public void Wipeout()
     {
-        trickCounter.text = "<color=red><shake>Wipeout!</color></shake>";
-        grounded = true;
-        CancelInvoke();
-        Invoke("HideTrickCounter", 4);
+        if(!grounded)
+        {
+            trickCounter.text = "<color=red><shake>Wipeout!</color></shake>";
+            grounded = true;
+            CancelInvoke();
+            Invoke("HideTrickCounter", 4);
+        }
     }
 }
