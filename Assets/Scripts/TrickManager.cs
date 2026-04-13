@@ -36,9 +36,13 @@ public class TrickManager : MonoBehaviour
     [Tooltip("How many points are awarded for a back flip.")]
     public float pointBackFlip;
 
-
+    [Tooltip("How fast the player turns horizontally in the air.")]
     float turnSpeedX;
+
+    [Tooltip("How fast the player turns vertically in the air.")]
     float turnSpeedY;
+
+
     public float airTurnSpeedX;
     public float airTurnSpeedY;
 
@@ -59,6 +63,7 @@ public class TrickManager : MonoBehaviour
     private void Start()
     {
         HideTrickCounter();
+        SetTurnSpeed(airTurnSpeedX, airTurnSpeedY);
     }
 
     public void SetTurnSpeed(float speedX, float speedY)
@@ -70,7 +75,6 @@ public class TrickManager : MonoBehaviour
     public void StartTrick()
     {
         grounded = false;
-        SetTurnSpeed(airTurnSpeedX, airTurnSpeedY);
     }
 
     public void EndTrick()

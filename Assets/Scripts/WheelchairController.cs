@@ -11,9 +11,6 @@ public class WheelchairController : MonoBehaviour
     [Tooltip("Whether the wheelchair is grounded or not.")]
     public bool grounded;
 
-    [Tooltip("How fast the wheelchair turns.")]
-    public float turnSpeed;
-
     [Tooltip("How fast the wheelchair turns horizontally in the air.")]
     public float turnSpeedHorizontal;
 
@@ -39,7 +36,6 @@ public class WheelchairController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         trickManager = GetComponent<TrickManager>();
-        trickManager.SetTurnSpeed(turnSpeedHorizontal, turnSpeedVertical);
     }
 
     /// <summary>
