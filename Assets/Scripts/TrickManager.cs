@@ -11,6 +11,8 @@ public class TrickManager : MonoBehaviour
     int threeSixties = 0;
     int flips = 0;
     int backFlips = 0;
+    public float degreesForFlip = 360 * 2;
+    public float degreesFor360 = 360 * 4;
     public float point360;
     public float pointFlip;
     public float pointBackFlip;
@@ -104,19 +106,19 @@ public class TrickManager : MonoBehaviour
     {
         string message = "";
 
-        if (Mathf.Abs(airXRotation) >= 360)
+        if (Mathf.Abs(airXRotation) >= degreesFor360)
         {
             threeSixties++;
             airXRotation = 0;
         }
 
-        if (airYRotation >= 360)
+        if (airYRotation >= degreesForFlip)
         {
             flips++;
             airYRotation = 0;
         }
 
-        if (airYRotation <= -360)
+        if (airYRotation <= -degreesForFlip)
         {
             backFlips++;
             airYRotation = 0;
