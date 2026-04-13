@@ -11,8 +11,14 @@ public class WheelchairController : MonoBehaviour
     [Tooltip("Whether the wheelchair is grounded or not.")]
     public bool grounded;
 
-    [Tooltip("How fast the wheelchair turns in the air.")]
+    [Tooltip("How fast the wheelchair turns.")]
     public float turnSpeed;
+
+    [Tooltip("How fast the wheelchair turns horizontally in the air.")]
+    public float turnSpeedHorizontal;
+
+    [Tooltip("How fast the wheelchair turns vertically in the air.")]
+    public float turnSpeedVertical;
 
     [Tooltip("Player input")]
     public Vector2 moveDirection;
@@ -23,15 +29,17 @@ public class WheelchairController : MonoBehaviour
     [Tooltip("The amount the player has flipped in the air in degrees.")]
     public float airYRotation = 0;
 
+    [Tooltip("The animation controller object.")]
     private Animator anim;
 
+    [Tooltip("The object that manages tricks.")]
     private TrickManager trickManager;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         trickManager = GetComponent<TrickManager>();
-        trickManager.SetTurnSpeed(turnSpeed, turnSpeed);
+        trickManager.SetTurnSpeed(turnSpeedHorizontal, turnSpeedVertical);
     }
 
     /// <summary>
@@ -41,7 +49,6 @@ public class WheelchairController : MonoBehaviour
     {
         grounded = true;
         trickManager.EndTrick();
-        trickManager.SetTurnSpeed(turnSpeed, turnSpeed);
     }
 
     /// <summary>
@@ -74,9 +81,9 @@ public class WheelchairController : MonoBehaviour
         // If the player is not on the ground, they can freely rotate.
         if (!grounded)
         {
-            transform.RotateAround(transform.position, Vector3.up, moveDirection.x * turnSpeed);
+            transform.RotateAround(transform.position, Vector3.up, moveDirection.x * turnSpeedHorizontal);
 
-            transform.RotateAround(transform.position, transform.right.normalized, moveDirection.y * turnSpeed);
+            transform.RotateAround(transform.position, transform.right.normalized, moveDirection.y * turnSpeedVertical);
         }
     }
 

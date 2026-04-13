@@ -6,16 +6,37 @@ using UnityEngine;
 
 public class TrickManager : MonoBehaviour
 {
+    [Tooltip("Whether the wheelchair is grounded or not.")]
     bool grounded = true;
+
+    [Tooltip("Current player score.")]
     float score = 0;
+
+    [Tooltip("How many 360s the player did before touching the ground.")]
     int threeSixties = 0;
+
+    [Tooltip("How many flips the player did before touching the ground.")]
     int flips = 0;
+
+    [Tooltip("How many backflips the player did before touching the ground.")]
     int backFlips = 0;
+
+    [Tooltip("How many degrees are needed to do a flip.")]
     public float degreesForFlip = 360 * 2;
-    public float degreesFor360 = 360 * 4;
+
+    [Tooltip("How many degrees are needed to do a 360.")]
+    public float degreesFor360 = 360;
+
+    [Tooltip("How many points are awarded for a 360.")]
     public float point360;
+
+    [Tooltip("How many points are awarded for a flip.")]
     public float pointFlip;
+
+    [Tooltip("How many points are awarded for a back flip.")]
     public float pointBackFlip;
+
+
     float turnSpeedX;
     float turnSpeedY;
     public float airTurnSpeedX;
