@@ -56,6 +56,9 @@ public class WheelchairController : MonoBehaviour
         trickManager.StartTrick();
     }
 
+    /// <summary>
+    /// Runs once per frame.
+    /// </summary>
     void Update()
     {
         // Get horizontal and vertical input
@@ -72,6 +75,9 @@ public class WheelchairController : MonoBehaviour
         Animate(horizontal, vertical, brake);
     }
 
+    /// <summary>
+    /// Runs once per second.
+    /// </summary>
     void FixedUpdate()
     {
         // If the player is not on the ground, they can freely rotate.
@@ -83,6 +89,12 @@ public class WheelchairController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Send information to the animation controller.
+    /// </summary>
+    /// <param name="horizontal"></param>
+    /// <param name="vertical"></param>
+    /// <param name="brake"></param>
     void Animate(float horizontal, float vertical, float brake)
     {
         anim.SetFloat("Horizontal", horizontal);

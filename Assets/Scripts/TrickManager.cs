@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class TrickManager : MonoBehaviour
@@ -64,6 +65,7 @@ public class TrickManager : MonoBehaviour
     {
         HideTrickCounter();
         SetTurnSpeed(airTurnSpeedX, airTurnSpeedY);
+        Debug.Log("TRICK MANAGER START");
     }
 
     public void SetTurnSpeed(float speedX, float speedY)
@@ -79,10 +81,15 @@ public class TrickManager : MonoBehaviour
 
     public void EndTrick()
     {
+        threeSixties = 0;
+        flips = 0;
+        backFlips = 0;
+        totalPoints = 0;
         grounded = true;
         AddTricksToScore();
         airXRotation = 0;
         airYRotation = 0;
+        Debug.Log("END OF TRICK");
     }
 
     private void Update()
@@ -120,34 +127,61 @@ public class TrickManager : MonoBehaviour
     // Update is called once per frame
     void HideTrickCounter()
     {
-        threeSixties = 0;
-        flips = 0;
-        backFlips = 0;
-        totalPoints = 0;
         trickCounter.text = "";
     }
 
     public void PerformTrick()
     {
-        string message = "";
+        bool newTrick = false;
 
         if (Mathf.Abs(airXRotation) >= degreesFor360)
         {
             threeSixties++;
             airXRotation = 0;
+            newTrick = true;
         }
 
         if (airYRotation >= degreesForFlip)
         {
             flips++;
             airYRotation = 0;
+            newTrick = true;
         }
 
         if (airYRotation <= -degreesForFlip)
         {
             backFlips++;
             airYRotation = 0;
+            newTrick = true;
         }
+
+        if(newTrick)
+        {
+            WriteScore();
+        }
+    }
+
+    public void AddTricksToScore()
+    {
+        score += totalPoints;
+        scoreCounter.text = "" + score;
+        Invoke("HideTrickCounter", 4);
+    }
+
+    public void Wipeout()
+    {
+        if(!grounded)
+        {
+            trickCounter.text = "<color=red><shake>Wipeout!</color></shake>";
+            grounded = true;
+            CancelInvoke();
+            Invoke("HideTrickCounter", 4);
+        }
+    }
+
+    public void WriteScore()
+    {
+        string message = "";
 
         float threeSixtyTotalPoints = threeSixties * point360;
 
@@ -178,23 +212,5 @@ public class TrickManager : MonoBehaviour
         }
 
         trickCounter.text = "<wave><rainb>" + message + "</rainb></wave>";
-    }
-
-    public void AddTricksToScore()
-    {
-        score += totalPoints;
-        scoreCounter.text = "" + score;
-        Invoke("HideTrickCounter", 4);
-    }
-
-    public void Wipeout()
-    {
-        if(!grounded)
-        {
-            trickCounter.text = "<color=red><shake>Wipeout!</color></shake>";
-            grounded = true;
-            CancelInvoke();
-            Invoke("HideTrickCounter", 4);
-        }
     }
 }
