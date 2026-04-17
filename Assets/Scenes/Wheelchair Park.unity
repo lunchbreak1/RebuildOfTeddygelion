@@ -5740,11 +5740,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1101c3d514b9d8b4f80ac561ef0b293d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  degreesForFlip: 720
+  degreesFor360: 1440
   point360: 100
   pointFlip: 100
   pointBackFlip: 100
-  airTurnSpeedX: 30
-  airTurnSpeedY: 20
+  airTurnSpeedX: 60
+  airTurnSpeedY: 40
   scoreCounter: {fileID: 1150302641}
   trickCounter: {fileID: 956859568}
   airXRotation: 0
@@ -7117,6 +7119,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1484162105646370607, guid: 82169b6efa7cfd844868115ac293dc92,
+        type: 3}
+      propertyPath: airXRotation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484162105646370607, guid: 82169b6efa7cfd844868115ac293dc92,
+        type: 3}
+      propertyPath: airYRotation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484162105646370607, guid: 82169b6efa7cfd844868115ac293dc92,
+        type: 3}
+      propertyPath: turnSpeedVertical
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484162105646370607, guid: 82169b6efa7cfd844868115ac293dc92,
+        type: 3}
+      propertyPath: turnSpeedHorizontal
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4917893052083797250, guid: 82169b6efa7cfd844868115ac293dc92,
         type: 3}
       propertyPath: m_Name
