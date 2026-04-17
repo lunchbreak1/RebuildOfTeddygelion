@@ -77,16 +77,20 @@ public class TrickManager : MonoBehaviour
 
     public void EndTrick()
     {
-        
         grounded = true;
         AddTricksToScore();
+        ClearTrickPointCounter();
+        Debug.Log("END OF TRICK");
+    }
+
+    public void ClearTrickPointCounter()
+    {
         threeSixties = 0;
         flips = 0;
         backFlips = 0;
         totalPoints = 0;
         airXRotation = 0;
         airYRotation = 0;
-        Debug.Log("END OF TRICK");
     }
 
     private void Update()
@@ -169,6 +173,7 @@ public class TrickManager : MonoBehaviour
     {
         if(!grounded)
         {
+            ClearTrickPointCounter();
             trickCounter.text = "<color=red><shake>Wipeout!</color></shake>";
             grounded = true;
             CancelInvoke();

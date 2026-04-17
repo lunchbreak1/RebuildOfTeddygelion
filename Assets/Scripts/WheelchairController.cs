@@ -64,6 +64,7 @@ public class WheelchairController : MonoBehaviour
         // Get horizontal and vertical input
         float horizontal = Input.GetAxisRaw("Horizontal");  // A/D or Left/Right arrow keys
         float vertical = Input.GetAxisRaw("Vertical");
+        float accelerate = Input.GetAxisRaw("Accelerate");
         float brake = Input.GetAxisRaw("Brake");// W/S or Up/Down arrow keys
 
         // Combine into a Vector2
@@ -72,7 +73,7 @@ public class WheelchairController : MonoBehaviour
         // Normalize the direction so it's always of unit length (magnitude of 1)
         moveDirection.Normalize();
 
-        Animate(horizontal, vertical, brake);
+        Animate(horizontal, vertical, accelerate, brake);
     }
 
     /// <summary>
@@ -95,10 +96,11 @@ public class WheelchairController : MonoBehaviour
     /// <param name="horizontal"></param>
     /// <param name="vertical"></param>
     /// <param name="brake"></param>
-    void Animate(float horizontal, float vertical, float brake)
+    void Animate(float horizontal, float vertical, float accelerate, float brake)
     {
         anim.SetFloat("Horizontal", horizontal);
         anim.SetFloat("Vertical", vertical);
+        anim.SetFloat("Accelerate", accelerate);
         anim.SetFloat("Brake", brake);
     }
 }
