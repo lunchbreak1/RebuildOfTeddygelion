@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using TMPro;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class TrickManager : MonoBehaviour
@@ -81,12 +77,13 @@ public class TrickManager : MonoBehaviour
 
     public void EndTrick()
     {
+        
+        grounded = true;
+        AddTricksToScore();
         threeSixties = 0;
         flips = 0;
         backFlips = 0;
         totalPoints = 0;
-        grounded = true;
-        AddTricksToScore();
         airXRotation = 0;
         airYRotation = 0;
         Debug.Log("END OF TRICK");
