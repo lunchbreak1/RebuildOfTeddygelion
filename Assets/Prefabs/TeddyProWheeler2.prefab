@@ -845,7 +845,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounded: 1
-  turnSpeed: 7.5
+  turnSpeedHorizontal: 0
+  turnSpeedVertical: 0
   moveDirection: {x: 0, y: 0}
   airXRotation: 0
   airYRotation: 0
