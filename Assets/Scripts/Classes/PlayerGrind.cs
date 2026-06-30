@@ -26,6 +26,8 @@ public class PlayerGrind : MonoBehaviour
     WheelchairController charController;
     Rigidbody body;
 
+    private Vector3 exitVelocity;
+
     private void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
@@ -100,6 +102,9 @@ public class PlayerGrind : MonoBehaviour
                 elapsedTime += Time.deltaTime;
             else
                 elapsedTime -= Time.deltaTime;
+
+            Vector3 grindVelocity = (nextPos - worldPos).normalized * grindSpeed;
+            exitVelocity = (nextPos - worldPos).normalized * grindSpeed;
         }
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -150,11 +155,22 @@ public class PlayerGrind : MonoBehaviour
         float3 pos, forward, up;
         SplineUtility.Evaluate(currentRailScript.railSpline.Spline, normalisedTime, out pos, out forward, out up);
 
-        Debug.Log("forward: " + forward + ", transform.forward: " + transform.forward);
+        Vector3 velocity = body.velocity; // or body.velocity depending on Unity version
 
+        if (velocity.sqrMagnitude < 0.01f)
+        {
+            velocity = transform.forward;
+        }
+
+        Debug.Log("forward: " + forward + ", transform.forward: " + transform.forward);
         //Calculate the direction the player is going down the rail
         currentRailScript.CalculateDirection(forward, transform.forward);
-        
+
+
+        //Debug.Log("forward: " + forward + ", velocity.normalized: " + velocity.normalized);
+        //currentRailScript.CalculateDirection(transform.forward, velocity.normalized);
+
+
         //Set player's initial position on the rail before starting the movement code.
         transform.position = splinePoint + (transform.up * heightOffset);
     }
@@ -166,6 +182,7 @@ public class PlayerGrind : MonoBehaviour
         currentRailScript = null;
         transform.position += transform.forward * 1;
         body.isKinematic = false;
+        body.velocity = exitVelocity;
 
         Debug.Log("Throw off the rail!");
         //Message.Write("");

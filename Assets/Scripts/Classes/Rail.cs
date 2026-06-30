@@ -69,4 +69,22 @@ public class Rail : MonoBehaviour
 
         Debug.Log("Normal dir: " + normalDir);
     }
+
+    public void CalculateDirection(Vector3 railForward, Vector3 playerForward)
+    {
+        //This calculates the severity of the angle between the player's forward and the forward of the point on the spline.
+        //90 degrees is the cutoff point as it's the perpendicular to the rail. Anything more than that and the player is clearly
+        //facing the other direction to the rail point.
+        /*float angle = Vector3.Angle(railForward, playerForward.normalized);
+
+        if (angle > 90f)
+            normalDir = false;
+        else
+            normalDir = true;*/
+
+        normalDir = Vector3.Dot(railForward.normalized,
+                            playerForward.normalized) >= 0;
+
+        Debug.Log("Normal dir: " + normalDir);
+    }
 }
