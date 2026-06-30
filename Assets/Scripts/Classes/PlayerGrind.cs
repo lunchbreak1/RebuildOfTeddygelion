@@ -131,6 +131,7 @@ public class PlayerGrind : MonoBehaviour
             onRail = true;
             CalculateAndSetRailPosition();
             body.isKinematic = true;
+            body.useGravity = false;
         }
     }
 
@@ -183,6 +184,7 @@ public class PlayerGrind : MonoBehaviour
         transform.position += transform.forward * 1;
         body.isKinematic = false;
         body.velocity = exitVelocity;
+        body.useGravity = true;
 
         Debug.Log("Throw off the rail!");
         //Message.Write("");
