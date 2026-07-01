@@ -180,6 +180,7 @@ public class PlayerGrind : MonoBehaviour
         //Set onRail to false, clear the rail script, and push the player off the rail.
         //It's a little sudden, there might be a better way of doing using coroutines and looping, but this will work.
         onRail = false;
+        currentRailScript.normalDir = false;
         currentRailScript = null;
         transform.position += transform.forward * 1;
         body.isKinematic = false;

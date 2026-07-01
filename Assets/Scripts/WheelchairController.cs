@@ -26,15 +26,22 @@ public class WheelchairController : MonoBehaviour
     [Tooltip("The amount the player has flipped in the air in degrees.")]
     public float airYRotation = 0;
 
+    [Tooltip("The amount of power the player has in their jump.")]
+    public float jumpPower = 0;
+
     [Tooltip("The animation controller object.")]
     private Animator anim;
 
     [Tooltip("The object that manages tricks.")]
     private TrickManager trickManager;
 
+    [Tooltip("Player Rigidbody")]
+    private Rigidbody body;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
+        body = GetComponent<Rigidbody>();
         trickManager = GetComponent<TrickManager>();
     }
 
@@ -56,6 +63,14 @@ public class WheelchairController : MonoBehaviour
         trickManager.StartTrick();
     }
 
+    public void Jump(float jumpPress)
+    {
+        if (grounded)
+        {
+            body.AddForce(Vector3.up * jumpPower * jumpPress);
+        }
+    }
+
     /// <summary>
     /// Runs once per frame.
     /// </summary>
@@ -66,6 +81,7 @@ public class WheelchairController : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         float accelerate = Input.GetAxisRaw("Accelerate");
         float brake = Input.GetAxisRaw("Brake");// W/S or Up/Down arrow keys
+        float jump = Input.GetAxisRaw("Jump");
 
         // Combine into a Vector2
         moveDirection = new Vector2(horizontal, vertical);
@@ -74,6 +90,11 @@ public class WheelchairController : MonoBehaviour
         moveDirection.Normalize();
 
         Animate(horizontal, vertical, accelerate, brake);
+
+        if(jump > 0)
+        {
+            Jump(jump);
+        }
     }
 
     /// <summary>
