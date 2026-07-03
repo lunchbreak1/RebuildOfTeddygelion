@@ -167,11 +167,6 @@ public class PlayerGrind : MonoBehaviour
         //Calculate the direction the player is going down the rail
         currentRailScript.CalculateDirection(forward, transform.forward);
 
-
-        //Debug.Log("forward: " + forward + ", velocity.normalized: " + velocity.normalized);
-        //currentRailScript.CalculateDirection(transform.forward, velocity.normalized);
-
-
         //Set player's initial position on the rail before starting the movement code.
         transform.position = splinePoint + (transform.up * heightOffset);
     }
