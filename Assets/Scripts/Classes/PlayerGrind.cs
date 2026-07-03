@@ -146,7 +146,8 @@ public class PlayerGrind : MonoBehaviour
 
         //The 0 to 1 value of the player's position on the spline. We also get the world position of where that
         //point is.
-        float normalisedTime = currentRailScript.CalculateTargetRailPoint(transform.position, out splinePoint);
+        float normalisedTime = Math.Abs(currentRailScript.CalculateTargetRailPoint(transform.position, out splinePoint));
+
         elapsedTime = timeForFullSpline * normalisedTime;
         //Multiply the full time for the spline by the normalised time to get elapsed time. This will be used in
         //the movement code.
@@ -163,7 +164,6 @@ public class PlayerGrind : MonoBehaviour
             velocity = transform.forward;
         }
 
-        Debug.Log("forward: " + forward + ", transform.forward: " + transform.forward);
         //Calculate the direction the player is going down the rail
         currentRailScript.CalculateDirection(forward, transform.forward);
 
