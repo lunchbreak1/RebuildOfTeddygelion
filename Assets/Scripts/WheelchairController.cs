@@ -29,6 +29,9 @@ public class WheelchairController : MonoBehaviour
     [Tooltip("The amount of power the player has in their jump.")]
     public float jumpPower = 0;
 
+    [Tooltip("The amount of posters the player has put up.")]
+    public int posters = 0;
+
     [Tooltip("The animation controller object.")]
     private Animator anim;
 
@@ -37,6 +40,8 @@ public class WheelchairController : MonoBehaviour
 
     [Tooltip("Player Rigidbody")]
     private Rigidbody body;
+
+    
 
     private void Start()
     {
