@@ -51,6 +51,9 @@ MonoBehaviour:
   playerNearby: 0
   poster: {fileID: 3527314287789534427}
   placeholder: {fileID: 7991831237332309100}
+  points: 150
+  posterMessage: <wave><rainb>Put up a poster!</rainb></wave>
+  posterMessageDuration: 4
 --- !u!65 &9200683135169087938
 BoxCollider:
   m_ObjectHideFlags: 0

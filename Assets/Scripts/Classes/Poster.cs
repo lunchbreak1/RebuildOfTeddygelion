@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,9 +17,25 @@ public class Poster : MonoBehaviour
     [Tooltip("The marker indicating to place a poster.")]
     public GameObject placeholder;
 
+    [Tooltip("The points earned by placing a poster.")]
+    public float points;
+
+    [Tooltip("The message to show when placing a poster.")]
+    public string posterMessage;
+
+    [Tooltip("The duration of the message shown by placing a poster.")]
+    public float posterMessageDuration;
+
+    [Tooltip("If the poster is set up or not.")]
+    bool posterUp = false;
+
+    [Tooltip("The object that handles the player's score")]
+    TrickManager trickManager;
+
     private void Start()
     {
         poster.SetActive(false);
+        trickManager = FindObjectOfType<TrickManager>();
     }
 
     /// <summary>
@@ -33,13 +50,12 @@ public class Poster : MonoBehaviour
 
             WheelchairController wheelchairController = FindAnyObjectByType<WheelchairController>();
 
-            if (wheelchairController != null)
+            if (wheelchairController != null && !posterUp)
             {
                 wheelchairController.posters++;
-            }
-            else
-            {
-                print("No wheelchair controller!");
+                trickManager.AddTricksToScore(points);
+                trickManager.WriteToTrickCounter(posterMessage, posterMessageDuration);
+                posterUp = true;
             }
         }
     }
