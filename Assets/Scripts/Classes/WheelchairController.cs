@@ -126,7 +126,7 @@ public class WheelchairController : MonoBehaviour
     {
         anim.SetFloat("Horizontal", horizontal);
         anim.SetFloat("Vertical", vertical);
-        anim.SetFloat("Accelerate", accelerate);
-        anim.SetFloat("Brake", brake);
+        anim.SetFloat("Accelerate", vertical);
+        anim.SetFloat("Brake", vertical);
     }
 }

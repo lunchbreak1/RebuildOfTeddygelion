@@ -316,7 +316,11 @@ namespace KartGame.KartSystems
             // apply vehicle physics
             if (m_CanMove)
             {
-                MoveVehicle(Input.Accelerate, Input.Brake, Input.TurnInput);
+                float vertical = UnityEngine.Input.GetAxisRaw("Vertical");
+                bool accelerateInput = vertical > 0;
+                bool breakInput = vertical < 0;
+                //MoveVehicle(Input.Accelerate, Input.Brake, Input.TurnInput);
+                MoveVehicle(accelerateInput, breakInput, Input.TurnInput);
             }
 
             GroundAirbourne();
