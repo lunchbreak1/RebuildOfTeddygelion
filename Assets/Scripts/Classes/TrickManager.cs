@@ -7,7 +7,7 @@ public class TrickManager : MonoBehaviour
     bool grounded = true;
 
     [Tooltip("Current player score.")]
-    float score = 0;
+    public float score = 0;
 
     [Tooltip("How many 360s the player did before touching the ground.")]
     int threeSixties = 0;
@@ -39,6 +39,9 @@ public class TrickManager : MonoBehaviour
     [Tooltip("How fast the player turns vertically in the air.")]
     float turnSpeedY;
 
+    [Tooltip("How long to show a message for")]
+    public int messageDuration = 4;
+
 
     public float airTurnSpeedX;
     public float airTurnSpeedY;
@@ -61,7 +64,6 @@ public class TrickManager : MonoBehaviour
     {
         HideTrickCounter();
         SetTurnSpeed(airTurnSpeedX, airTurnSpeedY);
-        Debug.Log("TRICK MANAGER START");
     }
 
     public void SetTurnSpeed(float speedX, float speedY)
@@ -78,9 +80,9 @@ public class TrickManager : MonoBehaviour
     public void EndTrick()
     {
         grounded = true;
-        AddTricksToScore();
+        AddTricksToScore(totalPoints);
+        CancelInvokeAndHideTrickCounter(messageDuration);
         ClearTrickPointCounter();
-        Debug.Log("END OF TRICK");
     }
 
     public void ClearTrickPointCounter()
@@ -162,11 +164,10 @@ public class TrickManager : MonoBehaviour
         }
     }
 
-    public void AddTricksToScore()
+    public void AddTricksToScore(float pointsToAdd)
     {
-        score += totalPoints;
+        score += pointsToAdd;
         scoreCounter.text = "" + score;
-        Invoke("HideTrickCounter", 4);
     }
 
     public void Wipeout()
@@ -174,10 +175,8 @@ public class TrickManager : MonoBehaviour
         if(!grounded)
         {
             ClearTrickPointCounter();
-            trickCounter.text = "<color=red><shake>Wipeout!</color></shake>";
+            WriteToTrickCounter("<color=red><shake>Wipeout!</color></shake>", messageDuration);
             grounded = true;
-            CancelInvoke();
-            Invoke("HideTrickCounter", 4);
         }
     }
 
@@ -213,6 +212,22 @@ public class TrickManager : MonoBehaviour
             message += "Total = " + totalPoints;
         }
 
-        trickCounter.text = "<wave><rainb>" + message + "</rainb></wave>";
+        WriteToTrickCounter("<wave><rainb>" + message + "</rainb></wave>");
+    }
+
+    public void WriteToTrickCounter(string message, float duration = 0)
+    {
+        trickCounter.text = message;
+
+        if(duration > 0)
+        {
+            CancelInvokeAndHideTrickCounter(duration);
+        }
+    }
+
+    public void CancelInvokeAndHideTrickCounter(float duration = 0)
+    {
+        CancelInvoke();
+        Invoke("HideTrickCounter", duration);
     }
 }

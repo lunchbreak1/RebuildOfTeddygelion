@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7571223584010651119
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5978258342920383639, guid: dcf787c7bdf40ec4c9642ef3a7da7cfa,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745619835524462840, guid: dcf787c7bdf40ec4c9642ef3a7da7cfa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745619835524462840, guid: dcf787c7bdf40ec4c9642ef3a7da7cfa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745619835524462840, guid: dcf787c7bdf40ec4c9642ef3a7da7cfa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745619835524462840, guid: dcf787c7bdf40ec4c9642ef3a7da7cfa,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745619835524462840, guid: dcf787c7bdf40ec4c9642ef3a7da7cfa,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745619835524462840, guid: dcf787c7bdf40ec4c9642ef3a7da7cfa,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745619835524462840, guid: dcf787c7bdf40ec4c9642ef3a7da7cfa,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745619835524462840, guid: dcf787c7bdf40ec4c9642ef3a7da7cfa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745619835524462840, guid: dcf787c7bdf40ec4c9642ef3a7da7cfa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6745619835524462840, guid: dcf787c7bdf40ec4c9642ef3a7da7cfa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887176880341731074, guid: dcf787c7bdf40ec4c9642ef3a7da7cfa,
+        type: 3}
+      propertyPath: message
+      value: <wave><rainb>Through the hoop!</rainb></wave>
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887176880341731074, guid: dcf787c7bdf40ec4c9642ef3a7da7cfa,
+        type: 3}
+      propertyPath: pointValue
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260555298687485394, guid: dcf787c7bdf40ec4c9642ef3a7da7cfa,
+        type: 3}
+      propertyPath: m_Name
+      value: Transparent Goal Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5333057600423100280, guid: dcf787c7bdf40ec4c9642ef3a7da7cfa, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dcf787c7bdf40ec4c9642ef3a7da7cfa, type: 3}
