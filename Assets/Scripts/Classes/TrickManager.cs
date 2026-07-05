@@ -33,6 +33,9 @@ public class TrickManager : MonoBehaviour
     [Tooltip("How many points are awarded for a back flip.")]
     public float pointBackFlip;
 
+    [Tooltip("This value dampens the points earned by consecutive tricks to prevent spamming.")]
+    public float consecutiveComboDampenFactor = 0.75f;
+
     [Tooltip("How fast the player turns horizontally in the air.")]
     float turnSpeedX;
 
@@ -41,6 +44,11 @@ public class TrickManager : MonoBehaviour
 
     [Tooltip("How long to show a message for")]
     public int messageDuration = 4;
+
+    private int consecutive360Combos = 0;
+    private int consecutiveFlipCombos = 0;
+    private int consecutiveBackFlipCombos = 0;
+
 
 
     public float airTurnSpeedX;
@@ -82,7 +90,38 @@ public class TrickManager : MonoBehaviour
         grounded = true;
         AddTricksToScore(totalPoints);
         CancelInvokeAndHideTrickCounter(messageDuration);
+        AddConsecutiveCombos();
         ClearTrickPointCounter();
+    }
+
+    public void AddConsecutiveCombos()
+    {
+        if(threeSixties > 0 && flips == 0 && backFlips == 0)
+        {
+            consecutive360Combos++;
+        }
+        else
+        {
+            consecutive360Combos = 0;
+        }
+
+        if (flips > 0 && threeSixties == 0 && backFlips == 0)
+        {
+            consecutiveFlipCombos++;
+        }
+        else
+        {
+            consecutiveFlipCombos = 0;
+        }
+
+        if (backFlips > 0 && threeSixties == 0 && flips == 0)
+        {
+            consecutiveBackFlipCombos++;
+        }
+        else
+        {
+            consecutiveBackFlipCombos = 0;
+        }
     }
 
     public void ClearTrickPointCounter()
@@ -183,12 +222,12 @@ public class TrickManager : MonoBehaviour
     public void WriteScore()
     {
         string message = "";
+        
+        float threeSixtyTotalPoints = Mathf.Round(threeSixties * point360 * (Mathf.Pow(consecutiveComboDampenFactor, consecutive360Combos)));
 
-        float threeSixtyTotalPoints = threeSixties * point360;
+        float flipTotalPoints = Mathf.Round(flips * pointFlip * (Mathf.Pow(consecutiveComboDampenFactor, consecutiveFlipCombos)));
 
-        float flipTotalPoints = flips * pointFlip;
-
-        float backflipTotalPoints = backFlips * pointBackFlip;
+        float backflipTotalPoints = Mathf.Round(backFlips * pointBackFlip * (Mathf.Pow(consecutiveComboDampenFactor, consecutiveBackFlipCombos)));
 
         if (threeSixties > 0)
         {
