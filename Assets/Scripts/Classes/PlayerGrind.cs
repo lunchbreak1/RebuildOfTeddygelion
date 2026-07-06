@@ -28,11 +28,18 @@ public class PlayerGrind : MonoBehaviour
 
     private Vector3 exitVelocity;
 
+    float horizontalInput = 0f;
+
+    [SerializeField] float rotateSpeed;
+
+    TrickManager trickManager;
+
     private void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
         charController = GetComponent<WheelchairController>();
         body = GetComponent<Rigidbody>();
+        trickManager = FindAnyObjectByType<TrickManager>();
     }
 
     private void FixedUpdate()
@@ -44,7 +51,7 @@ public class PlayerGrind : MonoBehaviour
     }
     private void Update()
     {
-
+        if (onRail) { horizontalInput = Input.GetAxisRaw("Horizontal"); }
     }
     void MovePlayerAlongRail()
     {
@@ -105,6 +112,11 @@ public class PlayerGrind : MonoBehaviour
 
             Vector3 grindVelocity = (nextPos - worldPos).normalized * grindSpeed;
             exitVelocity = (nextPos - worldPos).normalized * grindSpeed;
+
+            if (horizontalInput != 0)
+            {
+                transform.RotateAround(worldPos, transform.forward, horizontalInput * rotateSpeed);
+            }
         }
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -113,6 +125,7 @@ public class PlayerGrind : MonoBehaviour
         {
             onRail = true;
             charController.OnRail = true;
+            trickManager.onRail = true;
             currentRailScript = hit.gameObject.GetComponent<Rail>();
             CalculateAndSetRailPosition();
             //Message.Write("Sick rail grind!");
@@ -127,6 +140,7 @@ public class PlayerGrind : MonoBehaviour
         {
             onRail = true;
             charController.OnRail = true;
+            trickManager.onRail = true;
             CalculateAndSetRailPosition();
             body.isKinematic = true;
             body.useGravity = false;
@@ -182,5 +196,6 @@ public class PlayerGrind : MonoBehaviour
         Debug.Log("Throw off the rail!");
         //Message.Write("");
         charController.OnRail = false;
+        trickManager.onRail = false;
     }
 }

@@ -67,6 +67,8 @@ public class TrickManager : MonoBehaviour
 
     Vector2 moveDirection = Vector2.zero;
 
+    public bool onRail = false;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -136,7 +138,7 @@ public class TrickManager : MonoBehaviour
 
     private void Update()
     {
-        if(!grounded)
+        if(!grounded && !onRail)
         {
             float horizontal = Input.GetAxisRaw("Horizontal");  // A/D or Left/Right arrow keys
             float vertical = Input.GetAxisRaw("Vertical");      // W/S or Up/Down arrow keys

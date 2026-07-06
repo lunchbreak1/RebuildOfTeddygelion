@@ -3587,6 +3587,7 @@ MonoBehaviour:
   point360: 100
   pointFlip: 100
   pointBackFlip: 100
+  consecutiveComboDampenFactor: 0.75
   messageDuration: 4
   airTurnSpeedX: 60
   airTurnSpeedY: 40
@@ -3613,6 +3614,7 @@ MonoBehaviour:
   heightOffset: 0
   lerpSpeed: 10
   currentRailScript: {fileID: 0}
+  rotateSpeed: 0.1
 --- !u!1001 &683738108
 PrefabInstance:
   m_ObjectHideFlags: 0
