@@ -30,6 +30,8 @@ public class PlayerGrind : MonoBehaviour
 
     float horizontalInput = 0f;
 
+    public float maxRailRotation = 80f;
+
     [SerializeField] float rotateSpeed;
 
     TrickManager trickManager;
@@ -116,6 +118,16 @@ public class PlayerGrind : MonoBehaviour
             if (horizontalInput != 0)
             {
                 transform.RotateAround(worldPos, transform.forward, horizontalInput * rotateSpeed);
+            }
+
+            float roll = Mathf.DeltaAngle(0f, transform.eulerAngles.z);
+
+            if (Mathf.Abs(roll) > maxRailRotation)
+            {
+                
+                ThrowOffRail();
+                transform.position = transform.position + (transform.up * 1);
+                return;
             }
         }
     }

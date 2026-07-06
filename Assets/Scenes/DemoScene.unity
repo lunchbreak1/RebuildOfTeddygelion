@@ -3615,7 +3615,7 @@ MonoBehaviour:
   heightOffset: 0
   lerpSpeed: 10
   currentRailScript: {fileID: 0}
-  rotateSpeed: 5
+  rotateSpeed: 30
 --- !u!1001 &683738108
 PrefabInstance:
   m_ObjectHideFlags: 0
