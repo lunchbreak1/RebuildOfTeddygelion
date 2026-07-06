@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 /// <summary>
 /// This class controls the wheelchair.
@@ -41,7 +42,7 @@ public class WheelchairController : MonoBehaviour
     [Tooltip("Player Rigidbody")]
     private Rigidbody body;
 
-    
+    public bool OnRail = false;
 
     private void Start()
     {
@@ -94,12 +95,20 @@ public class WheelchairController : MonoBehaviour
         // Normalize the direction so it's always of unit length (magnitude of 1)
         moveDirection.Normalize();
 
-        Animate(horizontal, vertical, accelerate, brake);
-
-        if(jump > 0)
+        if (OnRail)
         {
-            Jump(jump);
+            Animate(0, 1, 1, 0);
         }
+        else
+        {
+            Animate(horizontal, vertical, accelerate, brake);
+
+            if (jump > 0)
+            {
+                Jump(jump);
+            }
+        }
+
     }
 
     /// <summary>
@@ -108,7 +117,7 @@ public class WheelchairController : MonoBehaviour
     void FixedUpdate()
     {
         // If the player is not on the ground, they can freely rotate.
-        if (!grounded)
+        if (!grounded && !OnRail)
         {
             transform.RotateAround(transform.position, Vector3.up, moveDirection.x * turnSpeedHorizontal);
 

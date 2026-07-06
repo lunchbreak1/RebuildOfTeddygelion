@@ -111,11 +111,8 @@ public class PlayerGrind : MonoBehaviour
     {
         if (hit.gameObject.tag == "Rail")
         {
-            /*When the player hits the rail, onRail is set to true, the current rail script is set to the
-             *rail script of the rail the player hits. Then we calculate the player's position on that rail.
-            */
-            
             onRail = true;
+            charController.OnRail = true;
             currentRailScript = hit.gameObject.GetComponent<Rail>();
             CalculateAndSetRailPosition();
             //Message.Write("Sick rail grind!");
@@ -129,6 +126,7 @@ public class PlayerGrind : MonoBehaviour
         if(currentRailScript != null)
         {
             onRail = true;
+            charController.OnRail = true;
             CalculateAndSetRailPosition();
             body.isKinematic = true;
             body.useGravity = false;
@@ -183,5 +181,6 @@ public class PlayerGrind : MonoBehaviour
 
         Debug.Log("Throw off the rail!");
         //Message.Write("");
+        charController.OnRail = false;
     }
 }
