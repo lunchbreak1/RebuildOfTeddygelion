@@ -3581,6 +3581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1101c3d514b9d8b4f80ac561ef0b293d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grounded: 1
   score: 0
   degreesForFlip: 720
   degreesFor360: 1080
@@ -3621,6 +3622,8 @@ MonoBehaviour:
   slipRange: 0.01
   slipRate: 0.01
   slipMaximum: 1.25
+  slipZone: 0.9
+  railPoints: 1
 --- !u!1001 &683738108
 PrefabInstance:
   m_ObjectHideFlags: 0
