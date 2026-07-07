@@ -3615,7 +3615,12 @@ MonoBehaviour:
   heightOffset: 0
   lerpSpeed: 10
   currentRailScript: {fileID: 0}
+  maxRailRotation: 80
   rotateSpeed: 30
+  railBalance: 0
+  slipRange: 0.01
+  slipRate: 0.01
+  slipMaximum: 1.25
 --- !u!1001 &683738108
 PrefabInstance:
   m_ObjectHideFlags: 0

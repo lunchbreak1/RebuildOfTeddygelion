@@ -34,11 +34,18 @@ public class PlayerGrind : MonoBehaviour
 
     [SerializeField] float rotateSpeed;
 
+    [Tooltip("The object that manages tricks and points")]
     TrickManager trickManager;
 
-    public float railBalanceCoefficient = 80f;
-
+    [Tooltip("The current balance on top of the rail. This value will shift over time.")]
     public float railBalance = 0f;
+
+    public float slipRange = 0.5f;
+
+    public float slipRate = 0.1f;
+
+    public float slipMaximum = 1.5f;
+
 
     private void Start()
     {
@@ -73,6 +80,8 @@ public class PlayerGrind : MonoBehaviour
             if (progress < 0 || progress > 1)
             {
                 ThrowOffRail();
+                Vector3 eulers = transform.rotation.eulerAngles;
+                transform.rotation = Quaternion.Euler(eulers.x, eulers.y, 0);
                 return;
             }
             //The rest of this code will not execute if the player is thrown off.
@@ -120,32 +129,41 @@ public class PlayerGrind : MonoBehaviour
             exitVelocity = (nextPos - worldPos).normalized * grindSpeed;
 
 
-            if (horizontalInput == 0)
-            {
-                if(railBalance == 0)
-                {
-                    railBalance = UnityEngine.Random.Range(-railBalanceCoefficient, railBalanceCoefficient);  
-                }
-                // This should rotate them slightly around.
-                transform.RotateAround(worldPos, transform.forward, railBalance);
-            }
-            else
-            {
-                transform.RotateAround(worldPos, transform.forward, horizontalInput * rotateSpeed);
-                railBalance = 0;
-            }
-
-            float roll = Mathf.DeltaAngle(0f, transform.eulerAngles.z);
-
-            if (Mathf.Abs(roll) > maxRailRotation)
-            {
-                
-                ThrowOffRail();
-                transform.position = transform.position + (transform.up * 1);
-                return;
-            }
+            ApplyRailSlip(worldPos);
         }
     }
+
+    /// <summary>
+    /// Causes the player to slip while on the rail.
+    /// </summary>
+    /// <param name="worldPos"></param>
+    void ApplyRailSlip(Vector3 worldPos)
+    {
+        if (railBalance == 0)
+        {
+            railBalance = UnityEngine.Random.Range(-slipRange, slipRange);
+        }
+        else if (railBalance > 0 && railBalance < slipMaximum)
+        {
+            railBalance += slipRate;
+        }
+        else if (railBalance < 0 && railBalance > -slipMaximum)
+        {
+            railBalance -= slipRate;
+        }
+
+        transform.RotateAround(worldPos, transform.forward, (railBalance - horizontalInput) * rotateSpeed);
+
+        float roll = Mathf.DeltaAngle(0f, transform.eulerAngles.z);
+
+        if (Mathf.Abs(roll) > maxRailRotation)
+        {
+            ThrowOffRail();
+            transform.position = transform.position + (transform.up * 1);
+            return;
+        }
+    }
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.tag == "Rail")
@@ -224,5 +242,6 @@ public class PlayerGrind : MonoBehaviour
         //Message.Write("");
         charController.OnRail = false;
         trickManager.onRail = false;
+        railBalance = 0;
     }
 }
