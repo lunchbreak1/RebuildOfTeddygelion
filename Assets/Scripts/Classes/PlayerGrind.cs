@@ -48,6 +48,8 @@ public class PlayerGrind : MonoBehaviour
 
     public float slipZone = 0.9f;
 
+    public float railPoints = 1f;
+
 
     private void Start()
     {
@@ -81,6 +83,7 @@ public class PlayerGrind : MonoBehaviour
             //In either case, the player has finished their grind.
             if (progress < 0 || progress > 1)
             {
+                trickManager.AddRailPointsToScore();
                 ThrowOffRail();
                 Vector3 eulers = transform.rotation.eulerAngles;
                 transform.rotation = Quaternion.Euler(eulers.x, eulers.y, 0);
@@ -130,6 +133,8 @@ public class PlayerGrind : MonoBehaviour
             Vector3 grindVelocity = (nextPos - worldPos).normalized * grindSpeed;
             exitVelocity = (nextPos - worldPos).normalized * grindSpeed;
 
+            trickManager.ScoreRailPoints(railPoints);
+
             if (progress > 0.01f && progress < slipZone)
             {
                 ApplyRailSlip(worldPos);
@@ -164,6 +169,7 @@ public class PlayerGrind : MonoBehaviour
         {
             ThrowOffRail();
             transform.position = transform.position + (transform.up * 1);
+            trickManager.ThrowOffRail();
             return;
         }
     }

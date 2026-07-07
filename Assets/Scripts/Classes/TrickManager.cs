@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class TrickManager : MonoBehaviour
@@ -68,6 +69,8 @@ public class TrickManager : MonoBehaviour
     Vector2 moveDirection = Vector2.zero;
 
     public bool onRail = false;
+
+    float railPoints = 0;
 
     // Start is called before the first frame update
     private void Start()
@@ -233,17 +236,17 @@ public class TrickManager : MonoBehaviour
 
         if (threeSixties > 0)
         {
-            message += "Outrageous 360 x" + threeSixties + " = " + threeSixtyTotalPoints + "\n";
+            message += "Outrageous 360! x" + threeSixties + " = " + threeSixtyTotalPoints + "\n";
         }
 
         if (flips > 0)
         {
-            message += "Awesome flip x" + flips + " = " + flipTotalPoints + "\n";
+            message += "Awesome flip! x" + flips + " = " + flipTotalPoints + "\n";
         }
 
         if (backFlips > 0)
         {
-            message += "Great back flip x" + backFlips + " = " + backflipTotalPoints + "\n";
+            message += "Great back flip! x" + backFlips + " = " + backflipTotalPoints + "\n";
         }
 
         totalPoints = threeSixtyTotalPoints + flipTotalPoints + backflipTotalPoints;
@@ -270,5 +273,27 @@ public class TrickManager : MonoBehaviour
     {
         CancelInvoke();
         Invoke("HideTrickCounter", duration);
+    }
+
+    public void ScoreRailPoints(float pointsToAdd)
+    {
+        railPoints += pointsToAdd;
+        string message = "Nice rail grind! +" + railPoints;
+        WriteToTrickCounter("<rainb>" + message + "</rainb>");
+    }
+
+    public void AddRailPointsToScore()
+    {
+        score += railPoints;
+        string message = "Nice rail grind! +" + railPoints;
+        WriteToTrickCounter("<wave><rainb>" + message + "</rainb></wave>", messageDuration);
+        railPoints = 0;
+    }
+
+    public void ThrowOffRail()
+    {
+        ClearTrickPointCounter();
+        WriteToTrickCounter("<color=red><shake>Thrown off the rail!</color></shake>", messageDuration);
+        railPoints = 0;
     }
 }
