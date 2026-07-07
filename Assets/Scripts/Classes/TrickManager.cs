@@ -4,7 +4,7 @@ using UnityEngine;
 public class TrickManager : MonoBehaviour
 {
     [Tooltip("Whether the wheelchair is grounded or not.")]
-    bool grounded = true;
+    public bool grounded = true;
 
     [Tooltip("Current player score.")]
     public float score = 0;

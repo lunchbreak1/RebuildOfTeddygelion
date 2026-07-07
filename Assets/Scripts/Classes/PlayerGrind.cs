@@ -46,6 +46,8 @@ public class PlayerGrind : MonoBehaviour
 
     public float slipMaximum = 1.5f;
 
+    public float slipZone = 0.9f;
+
 
     private void Start()
     {
@@ -128,8 +130,10 @@ public class PlayerGrind : MonoBehaviour
             Vector3 grindVelocity = (nextPos - worldPos).normalized * grindSpeed;
             exitVelocity = (nextPos - worldPos).normalized * grindSpeed;
 
-
-            ApplyRailSlip(worldPos);
+            if (progress > 0.01f && progress < slipZone)
+            {
+                ApplyRailSlip(worldPos);
+            }
         }
     }
 
@@ -237,9 +241,8 @@ public class PlayerGrind : MonoBehaviour
         body.isKinematic = false;
         body.velocity = exitVelocity;
         body.useGravity = true;
-
-        Debug.Log("Throw off the rail!");
-        //Message.Write("");
+        charController.grounded = true;
+        trickManager.grounded = true;
         charController.OnRail = false;
         trickManager.onRail = false;
         railBalance = 0;
