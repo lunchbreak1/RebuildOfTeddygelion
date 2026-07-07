@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEditor.VersionControl;
 using UnityEngine;
@@ -71,6 +72,8 @@ public class TrickManager : MonoBehaviour
     public bool onRail = false;
 
     float railPoints = 0;
+
+    
 
     // Start is called before the first frame update
     private void Start()
@@ -279,7 +282,7 @@ public class TrickManager : MonoBehaviour
     {
         railPoints += pointsToAdd;
         string message = "Nice rail grind! +" + railPoints;
-        WriteToTrickCounter("<rainb>" + message + "</rainb>");
+        WriteToTrickCounter("<wave><rainb>" + message + "</rainb></wave>");
     }
 
     public void AddRailPointsToScore()

@@ -50,6 +50,8 @@ public class PlayerGrind : MonoBehaviour
 
     public float railPoints = 1f;
 
+    private Coroutine railScoreCoroutine;
+
 
     private void Start()
     {
@@ -133,8 +135,6 @@ public class PlayerGrind : MonoBehaviour
             Vector3 grindVelocity = (nextPos - worldPos).normalized * grindSpeed;
             exitVelocity = (nextPos - worldPos).normalized * grindSpeed;
 
-            trickManager.ScoreRailPoints(railPoints);
-
             if (progress > 0.01f && progress < slipZone)
             {
                 ApplyRailSlip(worldPos);
@@ -184,6 +184,7 @@ public class PlayerGrind : MonoBehaviour
             currentRailScript = hit.gameObject.GetComponent<Rail>();
             CalculateAndSetRailPosition();
             //Message.Write("Sick rail grind!");
+            StartRailCoroutine();
         }
     }
 
@@ -199,6 +200,7 @@ public class PlayerGrind : MonoBehaviour
             CalculateAndSetRailPosition();
             body.isKinematic = true;
             body.useGravity = false;
+            StartRailCoroutine();
         }
     }
 
@@ -252,5 +254,33 @@ public class PlayerGrind : MonoBehaviour
         charController.OnRail = false;
         trickManager.onRail = false;
         railBalance = 0;
+        StopRailCoroutine();
+    }
+
+    IEnumerator RailScoreCoroutine()
+    {
+        while (onRail)
+        {
+            trickManager.ScoreRailPoints(railPoints);
+
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    void StartRailCoroutine()
+    {
+        if (railScoreCoroutine == null)
+        {
+            railScoreCoroutine = StartCoroutine(RailScoreCoroutine());
+        }
+    }
+
+    void StopRailCoroutine()
+    {
+        if (railScoreCoroutine != null)
+        {
+            StopCoroutine(railScoreCoroutine);
+            railScoreCoroutine = null;
+        }
     }
 }

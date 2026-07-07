@@ -3623,7 +3623,7 @@ MonoBehaviour:
   slipRate: 0.01
   slipMaximum: 1.25
   slipZone: 0.9
-  railPoints: 1
+  railPoints: 50
 --- !u!1001 &683738108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8595,17 +8595,17 @@ MonoBehaviour:
   typewriterStartsAutomatically: 0
   animationLoop: 0
   timeScale: 0
-  _text: 
+  _text: trrrrrrrrrrrrrrrrrr
   useDynamicScaling: 1
   referenceFontSize: 40
   isResettingTimeOnNewText: 1
   useDefaultDatabases: 1
-  databaseBehaviors: {fileID: 11400000, guid: 143063c9d42da4bb3bdef3e969df1633, type: 2}
-  databaseAppearances: {fileID: 11400000, guid: efcefe34ffbda4c5eb7e39d858738fbc,
+  databaseBehaviors: {fileID: 11400000, guid: b17f920585fb0e848b310ffae6f4318c, type: 2}
+  databaseAppearances: {fileID: 11400000, guid: b64e779277c57d14db112a1a8de2219d,
     type: 2}
   useDefaultStyleSheet: 1
   styleSheet: {fileID: 0}
-  databaseActions: {fileID: 11400000, guid: 59963a936d6fb4257a79cffca6bafcbb, type: 2}
+  databaseActions: {fileID: 11400000, guid: 410bc77bc81b4a6439b7623e550b7f19, type: 2}
   defaultAppearancesTags:
   - size
   defaultDisappearancesTags: []
@@ -9628,17 +9628,17 @@ MonoBehaviour:
   typewriterStartsAutomatically: 0
   animationLoop: 0
   timeScale: 0
-  _text: 
+  _text: rtgrtgrtgrtgrtgrtgrt
   useDynamicScaling: 1
   referenceFontSize: 40
   isResettingTimeOnNewText: 1
   useDefaultDatabases: 1
-  databaseBehaviors: {fileID: 11400000, guid: 143063c9d42da4bb3bdef3e969df1633, type: 2}
-  databaseAppearances: {fileID: 11400000, guid: efcefe34ffbda4c5eb7e39d858738fbc,
+  databaseBehaviors: {fileID: 11400000, guid: b17f920585fb0e848b310ffae6f4318c, type: 2}
+  databaseAppearances: {fileID: 11400000, guid: b64e779277c57d14db112a1a8de2219d,
     type: 2}
   useDefaultStyleSheet: 1
   styleSheet: {fileID: 0}
-  databaseActions: {fileID: 11400000, guid: 59963a936d6fb4257a79cffca6bafcbb, type: 2}
+  databaseActions: {fileID: 11400000, guid: 410bc77bc81b4a6439b7623e550b7f19, type: 2}
   defaultAppearancesTags:
   - size
   defaultDisappearancesTags: []
