@@ -36,6 +36,10 @@ public class PlayerGrind : MonoBehaviour
 
     TrickManager trickManager;
 
+    public float railBalanceCoefficient = 80f;
+
+    public float railBalance = 0f;
+
     private void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
@@ -115,9 +119,20 @@ public class PlayerGrind : MonoBehaviour
             Vector3 grindVelocity = (nextPos - worldPos).normalized * grindSpeed;
             exitVelocity = (nextPos - worldPos).normalized * grindSpeed;
 
-            if (horizontalInput != 0)
+
+            if (horizontalInput == 0)
+            {
+                if(railBalance == 0)
+                {
+                    railBalance = UnityEngine.Random.Range(-railBalanceCoefficient, railBalanceCoefficient);  
+                }
+                // This should rotate them slightly around.
+                transform.RotateAround(worldPos, transform.forward, railBalance);
+            }
+            else
             {
                 transform.RotateAround(worldPos, transform.forward, horizontalInput * rotateSpeed);
+                railBalance = 0;
             }
 
             float roll = Mathf.DeltaAngle(0f, transform.eulerAngles.z);
