@@ -153,7 +153,7 @@ public class TrickManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!grounded)
+        if(!grounded && !onRail)
         {
             airXRotation += moveDirection.x * turnSpeedX;
 
