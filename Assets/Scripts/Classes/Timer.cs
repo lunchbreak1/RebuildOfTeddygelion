@@ -1,3 +1,4 @@
+using KartGame.KartSystems;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,12 +18,25 @@ public class Timer : MonoBehaviour
 
     public GameObject saveMenu;
 
+    public WheelchairController player;
+    ArcadeKart kart;
+
     // Start is called before the first frame update
     void Start()
     {
         countdown = totalTime;
         textMeshProUGUI = GetComponent<TextMeshProUGUI>();
         trickManager = FindObjectOfType<TrickManager>();
+        player = FindAnyObjectByType<WheelchairController>();
+        kart = player.GetComponent<ArcadeKart>();
+
+        SaveData data = SaveManager.Load();
+
+        if(data != null)
+        {
+            Debug.Log("Player: " + data.playerName + ", Score: " + data.score);
+        }
+        
 
         StartTimerCoroutine();
     }
@@ -72,5 +86,7 @@ public class Timer : MonoBehaviour
 
         textMeshProUGUI.text = "Time's up! Here's your score: " + trickManager.score;
         saveMenu.gameObject.SetActive(true);
+        player.enabled = false;
+        kart.enabled = false;
     }
 }
