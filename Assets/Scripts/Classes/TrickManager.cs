@@ -50,7 +50,7 @@ public class TrickManager : MonoBehaviour
     private int consecutive360Combos = 0;
     private int consecutiveFlipCombos = 0;
     private int consecutiveBackFlipCombos = 0;
-
+    private int consecutiveRailGrinds = 0;
 
 
     public float airTurnSpeedX;
@@ -130,6 +130,11 @@ public class TrickManager : MonoBehaviour
         {
             consecutiveBackFlipCombos = 0;
         }
+
+        if (threeSixties > 0 || flips > 0 || backFlips > 0)
+        {
+            consecutiveRailGrinds = 0;
+        }     
     }
 
     public void ClearTrickPointCounter()
@@ -280,7 +285,7 @@ public class TrickManager : MonoBehaviour
 
     public void ScoreRailPoints(float pointsToAdd)
     {
-        railPoints += pointsToAdd;
+        railPoints += Mathf.Round(pointsToAdd * Mathf.Pow(consecutiveComboDampenFactor, consecutiveRailGrinds));
         string message = "Nice rail grind! +" + railPoints;
         WriteToTrickCounter("<wave><rainb>" + message + "</rainb></wave>");
     }
@@ -290,7 +295,11 @@ public class TrickManager : MonoBehaviour
         score += railPoints;
         string message = "Nice rail grind! +" + railPoints;
         WriteToTrickCounter("<wave><rainb>" + message + "</rainb></wave>", messageDuration);
-        railPoints = 0;
+        railPoints = 0;    
+        consecutiveRailGrinds++;
+        consecutive360Combos = 0;
+        consecutiveFlipCombos = 0;
+        consecutiveBackFlipCombos = 0;
     }
 
     public void ThrowOffRail()
