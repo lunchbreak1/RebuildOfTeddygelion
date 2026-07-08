@@ -15,6 +15,8 @@ public class Timer : MonoBehaviour
 
     private Coroutine timerCoroutine;
 
+    public GameObject saveMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,5 +71,6 @@ public class Timer : MonoBehaviour
         }
 
         textMeshProUGUI.text = "Time's up! Here's your score: " + trickManager.score;
+        saveMenu.gameObject.SetActive(true);
     }
 }

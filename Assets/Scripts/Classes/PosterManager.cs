@@ -33,8 +33,8 @@ public class PosterManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void SetPosterMessage()
     {
-        TextMeshProUGUI.text = (wheelchairController.posters > 0) ? "Posters: " + wheelchairController.posters + " / " + maxPosters : ""; 
+        TextMeshProUGUI.text = "Posters: " + wheelchairController.posters + " / " + maxPosters; 
     }
 }

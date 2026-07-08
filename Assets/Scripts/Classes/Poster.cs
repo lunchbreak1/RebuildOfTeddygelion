@@ -31,10 +31,14 @@ public class Poster : MonoBehaviour
     [Tooltip("The object that handles the player's score")]
     TrickManager trickManager;
 
+    [Tooltip("The object that handles the player's score")]
+    PosterManager posterManager;
+
     private void Start()
     {
         poster.SetActive(false);
         trickManager = FindObjectOfType<TrickManager>();
+        posterManager = FindObjectOfType<PosterManager>();
     }
 
     /// <summary>
@@ -55,6 +59,7 @@ public class Poster : MonoBehaviour
                 trickManager.AddTricksToScore(points);
                 trickManager.WriteToTrickCounter(posterMessage, posterMessageDuration);
                 posterUp = true;
+                posterManager.SetPosterMessage();
             }
         }
     }
