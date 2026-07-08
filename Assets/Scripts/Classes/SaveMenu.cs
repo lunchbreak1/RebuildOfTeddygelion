@@ -32,6 +32,8 @@ public class SaveMenu : MonoBehaviour
         if (string.IsNullOrWhiteSpace(playerName.text))
         {
             giveNameLabel.text = "<color=red><shake>Please give your file a name.</color></shake>";
+            CancelInvoke("Revert");
+            Invoke("Revert", messageDuration);
         }
         else
         {
@@ -41,6 +43,11 @@ public class SaveMenu : MonoBehaviour
             savePanel.SetActive(false);
             playAgainPanel.SetActive(true);
         }  
+    }
+
+    public void Revert()
+    {
+        giveNameLabel.text = "Please give your file a name.";
     }
 
     public void ReloadScene()

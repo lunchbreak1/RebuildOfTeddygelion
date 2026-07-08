@@ -278,7 +278,7 @@ public class TrickManager : MonoBehaviour
 
     public void CancelInvokeAndHideTrickCounter(float duration = 0)
     {
-        CancelInvoke();
+        CancelInvoke("HideTrickCounter");
         Invoke("HideTrickCounter", duration);
     }
 
