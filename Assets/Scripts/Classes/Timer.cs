@@ -88,5 +88,7 @@ public class Timer : MonoBehaviour
         saveMenu.gameObject.SetActive(true);
         player.enabled = false;
         kart.enabled = false;
+        player.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        player.GetComponent<PlayerGrind>().enabled = false;
     }
 }

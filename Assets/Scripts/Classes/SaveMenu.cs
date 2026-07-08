@@ -1,39 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SaveMenu : MonoBehaviour
 {
-    public TextMeshProUGUI playerName;
+    public TMP_InputField playerName;
 
-    public TextMeshProUGUI label;
+    public TextMeshProUGUI giveNameLabel;
 
     TrickManager trickManager;
 
     public float messageDuration;
+
+    public GameObject savePanel, playAgainPanel;
 
     // Start is called before the first frame update
     void Start()
     {
         trickManager = FindAnyObjectByType<TrickManager>();
 
-        if (trickManager != null) {
+        if (trickManager == null) {
             Debug.LogError("Could not find TrickManager in SaveMenu");
         }
     }
 
     public void Save()
     {
-        if (playerName.text == "")
+        if (string.IsNullOrWhiteSpace(playerName.text))
         {
-            label.text = "<color=red><shake>Please give your file a name.</color></shake>";
+            giveNameLabel.text = "<color=red><shake>Please give your file a name.</color></shake>";
         }
         else
         {
+            Debug.Log("Here's your name: " + playerName.text);
             SaveData data = new SaveData(playerName.text, trickManager.score);
             trickManager.WriteToTrickCounter("<color=green><shake>File saved!</color></shake>", messageDuration);
+            savePanel.SetActive(false);
+            playAgainPanel.SetActive(true);
         }  
     }
 
