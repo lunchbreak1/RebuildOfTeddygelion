@@ -307,9 +307,4 @@ public class TrickManager : MonoBehaviour
         WriteToTrickCounter("<color=red><shake>Thrown off the rail!</color></shake>", messageDuration);
         railPoints = 0;
     }
-
-    public void SaveScore(string name)
-    {
-        SaveData save = new SaveData(name, score);
-    }
 }

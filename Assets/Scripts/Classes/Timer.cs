@@ -36,7 +36,7 @@ public class Timer : MonoBehaviour
 
         if(data != null)
         {
-            Debug.Log("Player: " + data.playerName + ", Score: " + data.score);
+            Debug.Log("Player: " + data.playerName + ", Score: " + data.score + ", Level: " + data.level);
         }
         
 

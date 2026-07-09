@@ -38,7 +38,7 @@ public class SaveMenu : MonoBehaviour
         else
         {
             Debug.Log("Here's your name: " + playerName.text);
-            SaveData data = new SaveData(playerName.text, trickManager.score);
+            SaveData data = new SaveData(playerName.text, trickManager.score, SceneManager.GetActiveScene().name);
             trickManager.WriteToTrickCounter("<color=green><shake>File saved!</color></shake>", messageDuration);
             savePanel.SetActive(false);
             playAgainPanel.SetActive(true);
