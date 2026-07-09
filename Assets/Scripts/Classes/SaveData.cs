@@ -10,7 +10,5 @@ public class SaveData
         playerName = name;
         score = newScore;
         level = levelName;
-        SaveManager.Save(this);
-        
     }
 }

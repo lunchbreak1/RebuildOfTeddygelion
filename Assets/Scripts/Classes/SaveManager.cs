@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -65,5 +66,31 @@ public static class SaveManager
         using StreamReader sr = new(cs);
 
         return sr.ReadToEnd();
+    }
+
+    public static void SaveAll(List<SaveData> saveList)
+    {
+        SaveCollection collection = new SaveCollection();
+        collection.saves = saveList;
+
+        string json = JsonUtility.ToJson(collection);
+
+        byte[] encrypted = Encrypt(json);
+
+        File.WriteAllBytes(SavePath, encrypted);
+    }
+
+    public static List<SaveData> LoadAll()
+    {
+        if (!File.Exists(SavePath))
+            return new List<SaveData>();
+
+        byte[] encrypted = File.ReadAllBytes(SavePath);
+
+        string json = Decrypt(encrypted);
+
+        SaveCollection collection = JsonUtility.FromJson<SaveCollection>(json);
+
+        return collection.saves;
     }
 }

@@ -17,6 +17,8 @@ public class SaveMenu : MonoBehaviour
 
     public GameObject savePanel, playAgainPanel;
 
+    List<SaveData> saves;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,8 @@ public class SaveMenu : MonoBehaviour
         if (trickManager == null) {
             Debug.LogError("Could not find TrickManager in SaveMenu");
         }
+
+        saves = SaveManager.LoadAll();
     }
 
     public void Save()
@@ -39,6 +43,8 @@ public class SaveMenu : MonoBehaviour
         {
             Debug.Log("Here's your name: " + playerName.text);
             SaveData data = new SaveData(playerName.text, trickManager.score, SceneManager.GetActiveScene().name);
+            saves.Add(data);
+            SaveManager.SaveAll(saves);
             trickManager.WriteToTrickCounter("<color=green><shake>File saved!</color></shake>", messageDuration);
             savePanel.SetActive(false);
             playAgainPanel.SetActive(true);
