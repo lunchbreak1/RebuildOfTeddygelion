@@ -275,7 +275,7 @@ public class PlayerGrind : MonoBehaviour
         }
     }
 
-    void StopRailCoroutine()
+    public void StopRailCoroutine()
     {
         if (railScoreCoroutine != null)
         {

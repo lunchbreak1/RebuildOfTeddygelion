@@ -20,6 +20,7 @@ public class Timer : MonoBehaviour
 
     public WheelchairController player;
     ArcadeKart kart;
+    PlayerGrind playerGrind;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class Timer : MonoBehaviour
         trickManager = FindObjectOfType<TrickManager>();
         player = FindAnyObjectByType<WheelchairController>();
         kart = player.GetComponent<ArcadeKart>();
+        playerGrind = player.GetComponent<PlayerGrind>();
 
         SaveData data = SaveManager.Load();
 
@@ -80,15 +82,27 @@ public class Timer : MonoBehaviour
     {
         if (timerCoroutine != null)
         {
+            //StopAllCoroutines();
             StopCoroutine(timerCoroutine);
             timerCoroutine = null;
         }
 
+
         textMeshProUGUI.text = "Time's up! Here's your score: " + trickManager.score;
         saveMenu.gameObject.SetActive(true);
+        FreezePlayer();
+    }
+
+    void FreezePlayer()
+    {
         player.enabled = false;
         kart.enabled = false;
         player.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        player.GetComponent<PlayerGrind>().enabled = false;
+        player.OnRail = false;
+        playerGrind.StopRailCoroutine();
+        playerGrind.enabled = false;
+
+        trickManager.onRail = false;
+        trickManager.WriteToTrickCounter("");
     }
 }
