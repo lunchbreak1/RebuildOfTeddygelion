@@ -58,6 +58,11 @@ public class SaveMenu : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
+    Application.Quit();
+#endif
+
     }
 }
