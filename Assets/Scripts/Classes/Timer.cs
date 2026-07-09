@@ -32,13 +32,6 @@ public class Timer : MonoBehaviour
         kart = player.GetComponent<ArcadeKart>();
         playerGrind = player.GetComponent<PlayerGrind>();
 
-        List<SaveData> saves = SaveManager.LoadAll();
-
-        foreach (SaveData save in saves)
-        {
-            Debug.Log($"{save.playerName}: {save.level}: {save.score}");
-        }
-
         StartTimerCoroutine();
     }
 
