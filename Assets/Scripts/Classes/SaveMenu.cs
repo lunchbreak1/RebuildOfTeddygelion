@@ -17,6 +17,8 @@ public class SaveMenu : MonoBehaviour
 
     public GameObject savePanel, playAgainPanel;
 
+    public RecordsPanel RecordsPanel;
+
     List<SaveData> saves;
 
     // Start is called before the first frame update
@@ -48,6 +50,7 @@ public class SaveMenu : MonoBehaviour
             trickManager.WriteToTrickCounter("<color=green><shake>File saved!</color></shake>", messageDuration);
             savePanel.SetActive(false);
             playAgainPanel.SetActive(true);
+            RecordsPanel.PopulateRecords();
         }  
     }
 

@@ -12,18 +12,26 @@ public class RecordsPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        saves = SaveManager.LoadAll();
-
-        foreach (SaveData save in saves)
-        {
-            Debug.Log($"{save.playerName}: {save.level}: {save.score}");
-        }
-
         PopulateRecords();
     }
 
     public void PopulateRecords()
     {
+        if (saves != null)
+        {
+            saves.Clear();
+
+            SaveDataRecord []  recordsToDelete = recordsContainer.GetComponentsInChildren<SaveDataRecord>();
+
+            foreach (SaveDataRecord rec in recordsToDelete)
+            {
+                Debug.Log("Clearing record: " + rec.nameText.text);
+                Destroy(rec.gameObject);
+            }
+        }
+
+        saves = SaveManager.LoadAll();
+
         foreach (SaveData save in saves)
         {
             SaveDataRecord record = Instantiate(recordPrefab);
