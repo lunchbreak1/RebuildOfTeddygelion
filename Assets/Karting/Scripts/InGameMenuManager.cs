@@ -80,7 +80,7 @@ public class InGameMenuManager : MonoBehaviour
         {
        //     Cursor.lockState = CursorLockMode.None;
           //  Cursor.visible = true;
-            Time.timeScale = 0f;
+          //  Time.timeScale = 0f;
             AudioUtility.SetMasterVolume(volumeWhenMenuOpen);
 
             EventSystem.current.SetSelectedGameObject(null);
