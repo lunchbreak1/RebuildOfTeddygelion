@@ -34,11 +34,14 @@ public class Poster : MonoBehaviour
     [Tooltip("The object that handles the player's score")]
     PosterManager posterManager;
 
+    WheelchairController wheelchairController;
+
     private void Start()
     {
         poster.SetActive(false);
         trickManager = FindObjectOfType<TrickManager>();
         posterManager = FindObjectOfType<PosterManager>();
+        wheelchairController = FindAnyObjectByType<WheelchairController>();
     }
 
     /// <summary>
@@ -50,8 +53,6 @@ public class Poster : MonoBehaviour
         { 
             poster.SetActive(true);
             placeholder.SetActive(false);
-
-            WheelchairController wheelchairController = FindAnyObjectByType<WheelchairController>();
 
             if (wheelchairController != null && !posterUp)
             {
@@ -87,6 +88,7 @@ public class Poster : MonoBehaviour
         if (other.gameObject.transform.parent.GetComponent<WheelchairController>() != null)
         {
             playerNearby = true;
+            posterManager.SetPosterMessage();
         }
     }
 
@@ -99,6 +101,11 @@ public class Poster : MonoBehaviour
         if (playerNearby)
         {
             playerNearby = false;
+
+            if(wheelchairController.posters == 0)
+            {
+                posterManager.ClearPosterMessage();
+            }
         }
     }
 }
