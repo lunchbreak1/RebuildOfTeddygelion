@@ -22,6 +22,8 @@ public class Timer : MonoBehaviour
     ArcadeKart kart;
     PlayerGrind playerGrind;
 
+    public OptionsLayout saveMenuOptions;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +84,7 @@ public class Timer : MonoBehaviour
 
         textMeshProUGUI.text = "Time's up! Here's your score: " + trickManager.score;
         saveMenu.gameObject.SetActive(true);
+        saveMenuOptions.ChangeIndex(0);
         FreezePlayer();
     }
 

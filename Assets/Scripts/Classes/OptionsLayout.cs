@@ -10,24 +10,35 @@ public class OptionsLayout : MonoBehaviour
 
     private bool axisPressed;
 
-    private void Start()
+    private bool submitPressed;
+
+    void Start()
     {
-        ChangeIndex(0);
+        //ChangeIndex(0);
     }
 
     void Update()
+    {
+        GetDirectionalInput();
+
+        GetSubmitInput();
+    }
+
+    void GetDirectionalInput()
     {
         float input = Input.GetAxisRaw(axis);
 
         if (!axisPressed)
         {
-            if (input > 0.5f)
+            if (input < -0.5f)
+            //if (input > 0.5f)
             {
                 currentIndex = (currentIndex + 1) % options.Count;
                 ChangeIndex(currentIndex);
                 axisPressed = true;
             }
-            else if (input < -0.5f)
+            else if (input > 0.5f)
+            // else if (input < -0.5f)
             {
                 currentIndex = (currentIndex - 1 + options.Count) % options.Count;
                 ChangeIndex(currentIndex);
@@ -39,14 +50,24 @@ public class OptionsLayout : MonoBehaviour
         {
             axisPressed = false;
         }
+    }
 
-        if(Input.GetAxis("Submit") > 0)
+    void GetSubmitInput()
+    {
+        float input = Input.GetAxisRaw("Submit");
+
+        if (!submitPressed && input > 0.5f)
         {
             options[currentIndex].PerformAction();
         }
+
+        if (Mathf.Abs(input) < 0.2f)
+        {
+            submitPressed = false;
+        }
     }
 
-    void ChangeIndex(int index)
+    public void ChangeIndex(int index)
     {
         DeselectAllOptions();
         SelectOption(index);
