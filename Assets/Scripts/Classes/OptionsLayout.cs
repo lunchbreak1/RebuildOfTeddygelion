@@ -26,6 +26,9 @@ public class OptionsLayout : MonoBehaviour
 
     void GetDirectionalInput()
     {
+        if (options.Count == 0)
+            return;
+
         float input = Input.GetAxisRaw(axis);
 
         if (!axisPressed)
