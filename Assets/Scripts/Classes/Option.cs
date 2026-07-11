@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class Option : MonoBehaviour
 {
-    private TextMeshProUGUI textMesh;
+    [SerializeField] private TextMeshProUGUI textMesh;
     private bool selected;
 
     [SerializeField] private UnityEvent optionActions;
@@ -27,14 +27,23 @@ public class Option : MonoBehaviour
     public void SelectOption()
     {
         selected = true;
-        textMesh.color = Color.yellow;
+
+        if (textMesh != null)
+        {
+            textMesh.color = Color.yellow;
+        }
+        
         cursor.SetActive(true);
     }
 
     public void DeselectOption()
     {
         selected = true;
-        textMesh.color = Color.white;
+
+        if (textMesh != null) {
+            textMesh.color = Color.white;
+        }
+        
         cursor.SetActive(false);
     }
 }

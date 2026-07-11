@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589dd07d3b6a5c642b0c0b47650de51a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textMesh: {fileID: 8277743600501241308}
   optionActions:
     m_PersistentCalls:
       m_Calls: []

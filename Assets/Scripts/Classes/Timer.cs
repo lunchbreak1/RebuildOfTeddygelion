@@ -90,14 +90,19 @@ public class Timer : MonoBehaviour
 
     void FreezePlayer()
     {
-        player.enabled = false;
-        kart.enabled = false;
+        player.Animate(0, 0, 0, 0);
         player.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         player.OnRail = false;
+        player.enabled = false;
+
+        kart.enabled = false;
+        
         playerGrind.StopRailCoroutine();
         playerGrind.enabled = false;
 
         trickManager.onRail = false;
         trickManager.WriteToTrickCounter("");
+
+        
     }
 }

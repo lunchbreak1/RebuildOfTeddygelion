@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,11 +11,23 @@ public class OptionsLayout : MonoBehaviour
 
     private bool axisPressed;
 
-    private bool submitPressed;
+    private bool submitPressed = true;
 
     void Start()
     {
-        //ChangeIndex(0);
+        
+    }
+
+    private void OnEnable()
+    {
+        // isActive = true;
+        submitPressed = true;
+        SelectOption(currentIndex);
+    }
+
+    private void OnDisable()
+    {
+       // isActive = false;
     }
 
     void Update()
@@ -55,18 +68,42 @@ public class OptionsLayout : MonoBehaviour
         }
     }
 
-    void GetSubmitInput()
+    /*void GetSubmitInput()
     {
         float input = Input.GetAxisRaw("Submit");
 
-        if (!submitPressed && input > 0.5f)
+        if (!submitPressed && input > 0.5f && isActive)
         {
             options[currentIndex].PerformAction();
+            submitPressed = true;
         }
 
         if (Mathf.Abs(input) < 0.2f)
         {
             submitPressed = false;
+        }
+    }*/
+
+    void GetSubmitInput()
+    {
+        float input = Input.GetAxisRaw("Submit");
+
+        // Wait until Submit is released
+        if (submitPressed)
+        {
+            if (Mathf.Abs(input) < 0.2f)
+            {
+                submitPressed = false;
+            }
+
+            return;
+        }
+
+        // Submit can now be pressed again
+        if (input > 0.5f)
+        {
+            options[currentIndex].PerformAction();
+            submitPressed = true;
         }
     }
 

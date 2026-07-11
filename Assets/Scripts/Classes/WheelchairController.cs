@@ -130,7 +130,7 @@ public class WheelchairController : MonoBehaviour
     /// <param name="horizontal"></param>
     /// <param name="vertical"></param>
     /// <param name="brake"></param>
-    void Animate(float horizontal, float vertical, float accelerate, float brake)
+    public void Animate(float horizontal, float vertical, float accelerate, float brake)
     {
         anim.SetFloat("Horizontal", horizontal);
         anim.SetFloat("Vertical", vertical);
