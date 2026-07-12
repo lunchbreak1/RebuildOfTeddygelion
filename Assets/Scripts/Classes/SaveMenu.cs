@@ -9,7 +9,7 @@ public class SaveMenu : MonoBehaviour
 {
     public TMP_InputField playerName;
 
-    public TextMeshProUGUI giveNameLabel;
+    public TextMeshProUGUI giveNameLabel, recordSaved;
 
     TrickManager trickManager;
 
@@ -47,7 +47,7 @@ public class SaveMenu : MonoBehaviour
             SaveData data = new SaveData(playerName.text, trickManager.score, SceneManager.GetActiveScene().name);
             saves.Add(data);
             SaveManager.SaveAll(saves);
-            trickManager.WriteToTrickCounter("<color=green><shake>File saved!</color></shake>", messageDuration);
+            recordSaved.text = "<color=green><shake>File saved!</color></shake>";
             savePanel.SetActive(false);
             playAgainPanel.SetActive(true);
             RecordsPanel.PopulateRecords();

@@ -179,7 +179,7 @@ public class TrickManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void HideTrickCounter()
+    public void HideTrickCounter()
     {
         trickCounter.text = "";
     }
