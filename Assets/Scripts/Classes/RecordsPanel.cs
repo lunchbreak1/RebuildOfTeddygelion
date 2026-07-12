@@ -10,6 +10,8 @@ public class RecordsPanel : MonoBehaviour
 
     public List<OptionsLayout> otherMenus;
 
+    public RecordPagination pagination;
+
     List<SaveData> saves;
     // Start is called before the first frame update
     void Start()
@@ -23,9 +25,7 @@ public class RecordsPanel : MonoBehaviour
         {
             saves.Clear();
 
-            SaveDataRecord []  recordsToDelete = recordsContainer.GetComponentsInChildren<SaveDataRecord>();
-
-            foreach (SaveDataRecord rec in recordsToDelete)
+            foreach (SaveDataRecord rec in pagination.records)
             {
                 Debug.Log("Clearing record: " + rec.nameText.text);
                 Destroy(rec.gameObject);
@@ -40,6 +40,8 @@ public class RecordsPanel : MonoBehaviour
             record.Create(save);
             record.transform.SetParent(recordsContainer.transform, false);
         }
+
+        //pagination.PaginateRecords();
     }
 
     private void Update()

@@ -1083,6 +1083,7 @@ MonoBehaviour:
     type: 3}
   recordsContainer: {fileID: 6290215237235648447}
   otherMenus: []
+  pagination: {fileID: 2423269203164593790}
 --- !u!1001 &2128031191999551012
 PrefabInstance:
   m_ObjectHideFlags: 0

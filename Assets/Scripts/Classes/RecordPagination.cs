@@ -6,12 +6,22 @@ public class RecordPagination : MonoBehaviour
 {
     [SerializeField] private int recordsPerPage = 10;
 
-    private List<SaveDataRecord> records = new List<SaveDataRecord>();
+    public List<SaveDataRecord> records = new List<SaveDataRecord>();
     private int currentPage = 0;
     [SerializeField] TextMeshProUGUI pageNumberDisplay;
 
     private void Start()
     {
+        PaginateRecords();
+    }
+
+    public void PaginateRecords()
+    {
+        if (records != null)
+        {
+            records.Clear();
+        }
+
         records.AddRange(GetComponentsInChildren<SaveDataRecord>(true));
 
         ShowPage(0);
