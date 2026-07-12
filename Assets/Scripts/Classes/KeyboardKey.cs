@@ -34,7 +34,10 @@ public class KeyboardKey : MonoBehaviour
 
     public void Backspace()
     {
-        entryField.text = entryField.text.Substring(0, entryField.text.Length - 1);
+        if(entryField.text.Length > 0)
+        {
+            entryField.text = entryField.text.Substring(0, entryField.text.Length - 1);
+        }
     }
 
     public void SelectOption()

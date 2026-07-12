@@ -132,7 +132,7 @@ public class Keyboard : MonoBehaviour
             return;
         }
 
-        // Submit can now be pressed again
+        // Cancel can now be pressed again
         if (input > 0.5f)
         {
             Backspace();
@@ -161,7 +161,10 @@ public class Keyboard : MonoBehaviour
 
     public void Backspace()
     {
-        inputField.text = inputField.text.Substring(0, inputField.text.Length - 1);
+        if(inputField.text.Length > 0)
+        {
+            inputField.text = inputField.text.Substring(0, inputField.text.Length - 1);
+        }
     }
 
     public void Cancel()

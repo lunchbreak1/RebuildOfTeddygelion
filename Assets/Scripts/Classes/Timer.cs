@@ -101,8 +101,6 @@ public class Timer : MonoBehaviour
         playerGrind.enabled = false;
 
         trickManager.onRail = false;
-        trickManager.WriteToTrickCounter("");
-
-        
+        // trickManager.WriteToTrickCounter("");
     }
 }
