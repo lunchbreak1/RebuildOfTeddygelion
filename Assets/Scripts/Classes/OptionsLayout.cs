@@ -68,22 +68,6 @@ public class OptionsLayout : MonoBehaviour
         }
     }
 
-    /*void GetSubmitInput()
-    {
-        float input = Input.GetAxisRaw("Submit");
-
-        if (!submitPressed && input > 0.5f && isActive)
-        {
-            options[currentIndex].PerformAction();
-            submitPressed = true;
-        }
-
-        if (Mathf.Abs(input) < 0.2f)
-        {
-            submitPressed = false;
-        }
-    }*/
-
     void GetSubmitInput()
     {
         float input = Input.GetAxisRaw("Submit");

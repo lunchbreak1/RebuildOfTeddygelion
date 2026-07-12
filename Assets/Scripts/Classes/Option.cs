@@ -5,11 +5,8 @@ using UnityEngine.Events;
 public class Option : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textMesh;
-    private bool selected;
-
     [SerializeField] private UnityEvent optionActions;
     [SerializeField] private GameObject cursor;
-
 
     private void Start()
     {
@@ -18,16 +15,11 @@ public class Option : MonoBehaviour
 
     public void PerformAction()
     {
-        if (selected)
-        {
-            optionActions?.Invoke();
-        }
+        optionActions?.Invoke();
     }
 
     public void SelectOption()
     {
-        selected = true;
-
         if (textMesh != null)
         {
             textMesh.color = Color.yellow;
@@ -38,8 +30,6 @@ public class Option : MonoBehaviour
 
     public void DeselectOption()
     {
-        selected = true;
-
         if (textMesh != null) {
             textMesh.color = Color.white;
         }
