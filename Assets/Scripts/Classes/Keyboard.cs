@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Keyboard : MonoBehaviour
@@ -15,8 +16,11 @@ public class Keyboard : MonoBehaviour
 
     private bool submitPressed = true;
 
+    private bool cancelPressed = true;
+
     [SerializeField] GameObject savePanel, playAgainPanel;
 
+    [SerializeField] TMP_InputField inputField; 
     private void OnEnable()
     {
         SelectOption(currentIndex);
@@ -118,11 +122,21 @@ public class Keyboard : MonoBehaviour
     {
         float input = Input.GetAxisRaw("Cancel");
 
+        if (cancelPressed)
+        {
+            if (Mathf.Abs(input) < 0.2f)
+            {
+                cancelPressed = false;
+            }
+
+            return;
+        }
+
         // Submit can now be pressed again
         if (input > 0.5f)
         {
-            playAgainPanel.SetActive(true);
-            savePanel.SetActive(false);
+            Backspace();
+            cancelPressed = true;
         }
     }
 
@@ -143,5 +157,16 @@ public class Keyboard : MonoBehaviour
     void SelectOption(int index)
     {
         keys[currentIndex].SelectOption();
+    }
+
+    public void Backspace()
+    {
+        inputField.text = inputField.text.Substring(0, inputField.text.Length - 1);
+    }
+
+    public void Cancel()
+    {
+        playAgainPanel.SetActive(true);
+        savePanel.SetActive(false);
     }
 }

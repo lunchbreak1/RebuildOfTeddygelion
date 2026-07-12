@@ -6419,7 +6419,6 @@ GameObject:
   - component: {fileID: 662433730}
   - component: {fileID: 662433729}
   - component: {fileID: 662433728}
-  - component: {fileID: 662433731}
   m_Layer: 5
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -6583,18 +6582,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 662433726}
   m_CullTransparentMesh: 1
---- !u!114 &662433731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662433726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a1e81efb2af57847bdd95abe9f3b0fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &662603735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8218,6 +8205,7 @@ MonoBehaviour:
   columns: 12
   savePanel: {fileID: 2131991274}
   playAgainPanel: {fileID: 432695824}
+  inputField: {fileID: 662433728}
 --- !u!4 &768050151 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4620630991214195427, guid: d37752dae41113343935ada5ef32905f,
@@ -20666,6 +20654,21 @@ PrefabInstance:
       propertyPath: entryField
       value: 
       objectReference: {fileID: 662433728}
+    - target: {fileID: 1394817930477545852, guid: 25fce8a2a36202a4aaeedeb085a1283f,
+        type: 3}
+      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 746378322}
+    - target: {fileID: 1394817930477545852, guid: 25fce8a2a36202a4aaeedeb085a1283f,
+        type: 3}
+      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Backspace
+      objectReference: {fileID: 0}
+    - target: {fileID: 1394817930477545852, guid: 25fce8a2a36202a4aaeedeb085a1283f,
+        type: 3}
+      propertyPath: actions.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Keyboard, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2653052832921286300, guid: 25fce8a2a36202a4aaeedeb085a1283f,
         type: 3}
       propertyPath: m_Name
