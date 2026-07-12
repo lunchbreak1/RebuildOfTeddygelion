@@ -8,7 +8,7 @@ public class Keyboard : MonoBehaviour
     [SerializeField] List<KeyboardKey> keys = new List<KeyboardKey>();
     [SerializeField] int columns = 12;
 
-    private int currentIndex = 0;
+    [SerializeField] private int currentIndex = 0;
 
     private bool verticalPressed = false;
 
