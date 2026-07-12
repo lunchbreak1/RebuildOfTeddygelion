@@ -8,6 +8,8 @@ public class RecordsPanel : MonoBehaviour
 
     public GameObject recordsContainer;
 
+    public List<OptionsLayout> otherMenus;
+
     List<SaveData> saves;
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,20 @@ public class RecordsPanel : MonoBehaviour
             SaveDataRecord record = Instantiate(recordPrefab);
             record.Create(save);
             record.transform.SetParent(recordsContainer.transform, false);
+        }
+    }
+
+    private void Update()
+    {
+        if(Input.GetAxis("Cancel") > 0.5f)
+        {
+            gameObject.SetActive(false);
+
+            foreach(OptionsLayout layout in otherMenus)
+            {
+                layout.enabled = true;
+                layout.ChangeIndex(0);
+            }
         }
     }
 }
