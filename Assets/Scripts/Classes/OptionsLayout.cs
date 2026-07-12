@@ -42,7 +42,7 @@ public class OptionsLayout : MonoBehaviour
         if (options.Count == 0)
             return;
 
-        float input = Input.GetAxisRaw(axis);
+        float input = (axis == "Horizontal") ? -Input.GetAxisRaw(axis) : Input.GetAxisRaw(axis);
 
         if (!axisPressed)
         {
