@@ -165,6 +165,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  characterLimit: 16
 --- !u!114 &4428521265202358334
 MonoBehaviour:
   m_ObjectHideFlags: 0

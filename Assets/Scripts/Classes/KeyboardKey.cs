@@ -11,10 +11,14 @@ public class KeyboardKey : MonoBehaviour
     [SerializeField] TMP_InputField entryField;
     [SerializeField] private Outline outline;
     [SerializeField] private UnityEvent actions;
+    [SerializeField] private int characterLimit;
 
     public void AddText()
     {
-        entryField.text += textToAdd.text;
+        if(entryField.text.Length < characterLimit)
+        {
+            entryField.text += textToAdd.text;
+        }
     }
 
     public void SetGlow(bool enabled)
