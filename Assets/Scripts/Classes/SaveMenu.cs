@@ -67,11 +67,6 @@ public class SaveMenu : MonoBehaviour
 
     public void Quit()
     {
-#if UNITY_EDITOR
-        EditorApplication.ExitPlaymode();
-#else
-    Application.Quit();
-#endif
-
+        SceneManager.LoadScene("Title Screen");
     }
 }
