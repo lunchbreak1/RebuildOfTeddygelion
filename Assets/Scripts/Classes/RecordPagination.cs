@@ -12,17 +12,18 @@ public class RecordPagination : MonoBehaviour
 
     private void Start()
     {
-        PaginateRecords();
+        //PaginateRecords();
     }
 
-    public void PaginateRecords()
+    public void PaginateRecords(List<SaveDataRecord> newRecords)
     {
-        if (records != null)
-        {
-            records.Clear();
-        }
+        records.Clear();
 
-        records.AddRange(GetComponentsInChildren<SaveDataRecord>(true));
+        //records = newRecords;
+
+        //records.AddRange(GetComponentsInChildren<SaveDataRecord>(false));
+
+        records.AddRange(newRecords);
 
         ShowPage(0);
     }

@@ -13,6 +13,8 @@ public class RecordsPanel : MonoBehaviour
     public RecordPagination pagination;
 
     List<SaveData> saves;
+
+    List<SaveDataRecord> records;
     // Start is called before the first frame update
     void Awake()
     {
@@ -24,24 +26,31 @@ public class RecordsPanel : MonoBehaviour
         if (saves != null)
         {
             saves.Clear();
+        }
 
-            foreach (SaveDataRecord rec in pagination.records)
+        if (records != null)
+        {
+            foreach (SaveDataRecord rec in records)
             {
                 Debug.Log("Clearing record: " + rec.nameText.text);
                 Destroy(rec.gameObject);
+                pagination.records.Clear();
             }
         }
 
         saves = SaveManager.LoadAll();
+
+        records = new List<SaveDataRecord>();
 
         foreach (SaveData save in saves)
         {
             SaveDataRecord record = Instantiate(recordPrefab);
             record.Create(save);
             record.transform.SetParent(recordsContainer.transform, false);
+            records.Add(record);
         }
 
-        //pagination.PaginateRecords();
+        pagination.PaginateRecords(records);
     }
 
     private void Update()
