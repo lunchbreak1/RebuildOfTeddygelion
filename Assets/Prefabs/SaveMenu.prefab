@@ -2981,6 +2981,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayAgainPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 45826687178058391, guid: 0694d8098c0c4be48b733d009d093647,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2187548887904820400, guid: 0694d8098c0c4be48b733d009d093647,
         type: 3}
       propertyPath: optionActions.m_PersistentCalls.m_Calls.Array.data[0].m_Target
