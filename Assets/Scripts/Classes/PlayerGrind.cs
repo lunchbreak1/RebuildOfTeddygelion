@@ -249,8 +249,6 @@ public class PlayerGrind : MonoBehaviour
         body.isKinematic = false;
         body.velocity = exitVelocity;
         body.useGravity = true;
-        charController.grounded = true;
-        trickManager.grounded = true;
         charController.OnRail = false;
         trickManager.onRail = false;
         railBalance = 0;
