@@ -59,6 +59,7 @@ public class PlayerGrind : MonoBehaviour
         charController = GetComponent<WheelchairController>();
         body = GetComponent<Rigidbody>();
         trickManager = FindAnyObjectByType<TrickManager>();
+        ThrowOffRail();
     }
 
     private void FixedUpdate()
