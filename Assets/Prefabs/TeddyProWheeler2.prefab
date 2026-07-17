@@ -691,6 +691,11 @@ PrefabInstance:
       propertyPath: LeaveGround.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4895846115232909978, guid: cba6236a3ca88a54081cc989c4f0c08a,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4895846115232909979, guid: cba6236a3ca88a54081cc989c4f0c08a,
         type: 3}
       propertyPath: m_RootOrder
@@ -850,6 +855,9 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0}
   airXRotation: 0
   airYRotation: 0
+  jumpPower: 0
+  posters: 0
+  OnRail: 0
 --- !u!95 &2763747505193181013
 Animator:
   serializedVersion: 5
