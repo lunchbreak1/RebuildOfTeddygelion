@@ -379,8 +379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 700d765029aec4448a7f8223b9ce2623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTime: 120
-  countdown: 120
+  totalTime: 2
+  countdown: 2
   saveMenu: {fileID: 1800899148}
   player: {fileID: 670925396}
   saveMenuOptions: {fileID: 525972179}

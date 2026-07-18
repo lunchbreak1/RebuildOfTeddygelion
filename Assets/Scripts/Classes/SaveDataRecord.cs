@@ -20,53 +20,44 @@ public class SaveDataRecord : MonoBehaviour
     /// </summary>
     public TextMeshProUGUI scoreText;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public TextMeshProUGUI threeSixtiesText;
+    public TextMeshProUGUI flipsText;
+    public TextMeshProUGUI backflipsText;
+    public TextMeshProUGUI wipeoutsText;
+    public TextMeshProUGUI railGrindsText;
+    public TextMeshProUGUI fallOffRailsText;
+    public TextMeshProUGUI postersText;
+    public TextMeshProUGUI collectablesText;
 
     public void Create(SaveData data)
     {
-        SetName(data.playerName);
+        SetText(data.playerName, nameText);
 
-        SetScore(data.score);
+        SetText(data.score, scoreText);
 
-        SetLevel(data.level);
+        SetText(data.level, levelText);
+        SetText(data.threeSixties, threeSixtiesText);
+        SetText(data.flips, flipsText);
+        SetText(data.backFlips, backflipsText);
+        SetText(data.wipeouts, wipeoutsText);
+        SetText(data.railGrinds, railGrindsText);
+        SetText(data.fallOffRails, fallOffRailsText);
+        SetText(data.posters, postersText);
+        SetText(data.collectables, collectablesText);
     }
 
-    /// <summary>
-    /// Set the name
-    /// </summary>
-    /// <param name="name"></param>
-    public void SetName(string name)
+    public void SetText(string text, TextMeshProUGUI textMesh)
     {
-        nameText.text = name;
+        textMesh.text = text;
     }
 
-    /// <summary>
-    /// Set the level
-    /// </summary>
-    /// <param name="name"></param>
-    public void SetLevel(string level)
+    public void SetText(float text, TextMeshProUGUI textMesh)
     {
-        levelText.text = level;
+        textMesh.text = text + "";
     }
 
-    /// <summary>
-    /// Set the name
-    /// </summary>
-    /// <param name="name"></param>
-    public void SetScore(float score)
+    public void SetText(int text, TextMeshProUGUI textMesh)
     {
-        scoreText.text = "" + score;
+        textMesh.text = text + "";
     }
-
-
 }
