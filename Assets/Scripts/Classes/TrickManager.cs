@@ -103,37 +103,47 @@ public class TrickManager : MonoBehaviour
 
     public void AddConsecutiveCombos()
     {
-        if(threeSixties > 0 && flips == 0 && backFlips == 0)
+        if(threeSixties > 0)
         {
-            consecutive360Combos++;
-        }
-        else
-        {
-            consecutive360Combos = 0;
-        }
+            if (flips == 0 && backFlips == 0)
+            {
+                consecutive360Combos++;
+            }
 
-        if (flips > 0 && threeSixties == 0 && backFlips == 0)
-        {
-            consecutiveFlipCombos++;
-        }
-        else
-        {
             consecutiveFlipCombos = 0;
-        }
 
-        if (backFlips > 0 && threeSixties == 0 && flips == 0)
-        {
-            consecutiveBackFlipCombos++;
-        }
-        else
-        {
             consecutiveBackFlipCombos = 0;
         }
 
-        if (threeSixties > 0 || flips > 0 || backFlips > 0)
+        if (flips > 0)
+        {
+            if(threeSixties == 0 && backFlips == 0)
+            {
+                consecutiveFlipCombos++;
+            }
+
+            consecutive360Combos = 0;
+
+            consecutiveBackFlipCombos = 0;
+
+        }
+
+        if (backFlips > 0)
+        {
+            if(threeSixties == 0 && flips == 0)
+            {
+                consecutiveBackFlipCombos++;
+            }
+
+            consecutive360Combos = 0;
+
+            consecutiveFlipCombos = 0;
+        }
+
+        if(threeSixties > 0 || flips > 0 ||  backFlips > 0)
         {
             consecutiveRailGrinds = 0;
-        }     
+        }
     }
 
     public void ClearTrickPointCounter()
