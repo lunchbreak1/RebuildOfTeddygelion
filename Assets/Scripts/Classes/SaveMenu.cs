@@ -21,10 +21,13 @@ public class SaveMenu : MonoBehaviour
 
     List<SaveData> saves;
 
+    WheelchairController wheelchairController;
+
     // Start is called before the first frame update
     void Start()
     {
         trickManager = FindAnyObjectByType<TrickManager>();
+        wheelchairController = FindAnyObjectByType<WheelchairController>();
 
         if (trickManager == null) {
             Debug.LogError("Could not find TrickManager in SaveMenu");
@@ -44,7 +47,9 @@ public class SaveMenu : MonoBehaviour
         else
         {
             Debug.Log("Here's your name: " + playerName.text);
-            SaveData data = new SaveData(playerName.text, trickManager.score, SceneManager.GetActiveScene().name);
+            SaveData data = new SaveData(playerName.text, trickManager.score, SceneManager.GetActiveScene().name,
+                trickManager.overall360Combos, trickManager.overallFlipCombos, trickManager.overallBackFlipCombos,
+                trickManager.overallWipeouts, trickManager.overallRailGrinds, trickManager.overallRailFalls, wheelchairController.posters, trickManager.collectables);
             saves.Add(data);
             SaveManager.SaveAll(saves);
             recordSaved.text = "<color=green><shake>File saved!</color></shake>";
