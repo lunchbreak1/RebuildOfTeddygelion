@@ -57,6 +57,7 @@ public class TrickManager : MonoBehaviour
     public int overallRailGrinds = 0;
     public int overallWipeouts = 0;
     public int overallRailFalls = 0;
+    public int collectables = 0;
 
     public float airTurnSpeedX;
     public float airTurnSpeedY;

@@ -1777,6 +1777,11 @@ PrefabInstance:
       propertyPath: message
       value: <wave><rainb>Loop-de-loop!</rainb></wave>
       objectReference: {fileID: 0}
+    - target: {fileID: 4315972322001103224, guid: f4a4a937612db8940b5adb577926f761,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4775,6 +4780,13 @@ MonoBehaviour:
   pointBackFlip: 100
   consecutiveComboDampenFactor: 0.75
   messageDuration: 4
+  overall360Combos: 0
+  overallFlipCombos: 0
+  overallBackFlipCombos: 0
+  overallRailGrinds: 0
+  overallWipeouts: 0
+  overallRailFalls: 0
+  collectables: 0
   airTurnSpeedX: 60
   airTurnSpeedY: 40
   scoreCounter: {fileID: 1554794632}
@@ -15683,6 +15695,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4315972322001103224, guid: f4a4a937612db8940b5adb577926f761,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

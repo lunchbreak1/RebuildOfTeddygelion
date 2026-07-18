@@ -150,6 +150,7 @@ MonoBehaviour:
   pointValue: 50
   message: <wave><rainb>You got the box!</rainb></wave>
   messageDuration: 4
+  isCollectable: 1
 --- !u!114 &5333057600423100280
 MonoBehaviour:
   m_ObjectHideFlags: 0

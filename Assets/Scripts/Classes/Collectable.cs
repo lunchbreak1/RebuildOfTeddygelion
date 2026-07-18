@@ -19,6 +19,10 @@ public class Collectabile : MonoBehaviour
     [Tooltip("How long the message is shown when the item is picked up")]
     private int messageDuration;
 
+    [SerializeField]
+    [Tooltip("Does this object count as a collectable to the trick manager?")]
+    private bool isCollectable;
+
     [Tooltip("The object that handles the player's score")]
     TrickManager trickManager;
 
@@ -38,6 +42,11 @@ public class Collectabile : MonoBehaviour
             trickManager.AddTricksToScore(pointValue);
             trickManager.WriteToTrickCounter(message, messageDuration);
             Destroy(gameObject);
+
+            if (isCollectable)
+            {
+                trickManager.collectables++;
+            }
         }
     }
 }
