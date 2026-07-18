@@ -51,6 +51,12 @@ public class TrickManager : MonoBehaviour
     private int consecutiveBackFlipCombos = 0;
     private int consecutiveRailGrinds = 0;
 
+    public int overall360Combos = 0;
+    public int overallFlipCombos = 0;
+    public int overallBackFlipCombos = 0;
+    public int overallRailGrinds = 0;
+    public int overallWipeouts = 0;
+    public int overallRailFalls = 0;
 
     public float airTurnSpeedX;
     public float airTurnSpeedY;
@@ -110,6 +116,8 @@ public class TrickManager : MonoBehaviour
                 consecutive360Combos++;
             }
 
+            overall360Combos += threeSixties;
+
             consecutiveFlipCombos = 0;
 
             consecutiveBackFlipCombos = 0;
@@ -121,6 +129,8 @@ public class TrickManager : MonoBehaviour
             {
                 consecutiveFlipCombos++;
             }
+
+            overallFlipCombos += flips;
 
             consecutive360Combos = 0;
 
@@ -134,6 +144,8 @@ public class TrickManager : MonoBehaviour
             {
                 consecutiveBackFlipCombos++;
             }
+
+            overallBackFlipCombos += backFlips;
 
             consecutive360Combos = 0;
 
@@ -238,6 +250,7 @@ public class TrickManager : MonoBehaviour
             ClearTrickPointCounter();
             WriteToTrickCounter("<color=red><shake>Wipeout!</color></shake>", messageDuration);
             grounded = true;
+            overallWipeouts++;
         }
     }
 
@@ -309,6 +322,7 @@ public class TrickManager : MonoBehaviour
         consecutive360Combos = 0;
         consecutiveFlipCombos = 0;
         consecutiveBackFlipCombos = 0;
+        overallRailGrinds++;
     }
 
     public void ThrowOffRail()
@@ -316,5 +330,6 @@ public class TrickManager : MonoBehaviour
         ClearTrickPointCounter();
         WriteToTrickCounter("<color=red><shake>Thrown off the rail!</color></shake>", messageDuration);
         railPoints = 0;
+        overallRailFalls++;
     }
 }
