@@ -191,6 +191,14 @@ public class PlayerGrind : MonoBehaviour
 
     private void OnCollisionEnter(Collision hit)
     {
+        foreach (ContactPoint contact in hit.contacts)
+        {
+            if (contact.thisCollider.name == "KartBouncingCapsule")
+            {
+                return;
+            }
+        }
+
         currentRailScript = hit.gameObject.GetComponent<Rail>();
 
         if(currentRailScript != null)
