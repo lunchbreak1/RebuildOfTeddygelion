@@ -76,10 +76,18 @@ public class Timer : MonoBehaviour
             timerCoroutine = null;
         }
 
-        //textMeshProUGUI.text = "Time's up! Here's your score: " + trickManager.score;
-        //saveMenu.gameObject.SetActive(true);
-        //saveMenuOptions.ChangeIndex(0);
-        FreezePlayer();
+        player.Animate(0, 0, 0, 0);
+        player.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        player.OnRail = false;
+        player.enabled = false;
+
+        kart.enabled = false;
+
+        playerGrind.StopRailCoroutine();
+        playerGrind.enabled = false;
+
+        //trickManager.HideTrickCounter();
+        //trickManager.enabled = false;
     }
 
     public void Unpause()
