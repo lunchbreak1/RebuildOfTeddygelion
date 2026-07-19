@@ -35,7 +35,7 @@ public class PosterManager : MonoBehaviour
     // Update is called once per frame
     public void SetPosterMessage()
     {
-        TextMeshProUGUI.text = wheelchairController.posters > 0 ? "Posters: " + wheelchairController.posters + " / " + maxPosters : "Press B to put up a poster!"; 
+        TextMeshProUGUI.text = wheelchairController.posters > 0 ? "Posters: " + wheelchairController.posters + " / " + maxPosters : "Press the X key or east button to put up a poster!"; 
     }
 
     public void ClearPosterMessage()
