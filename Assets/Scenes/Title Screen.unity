@@ -1411,7 +1411,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 785, y: -1198}
+  m_AnchoredPosition: {x: 785, y: -1322}
   m_SizeDelta: {x: 726.5753, y: 292.2139}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &609395508
@@ -3101,39 +3101,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<color=yellow>Starring Teddy Cosmo as himself</color>
-
-
-    Concept and
-    direction by Teddy Cosmo
-
-    Music by Teddy Cosmo
-
-    Programmed by Ian Kline
-
-
-    Assets
-    used:
-
-
-    Unity Karting Microgame
-
-    The Good Game Assets Stunt Ramps
-
-    Adam
-    Lutton''s RailGrind
-
-    Mellow Fox studios Building Pack
-
-    Hovl Studio Magic
-    Effects
-
-    Yughues Concrete Materials
-
-
-
-
-'
+  m_text: "Executive Producer\n<color=green>T</color>eddy Cosmo\n\nMusic by \nTeddy
+    Cosmo\n\nDeveloped by\nIan Kline\n\n<color=yellow>Starring Teddy Cosmo as himself</color>\n\nAssets
+    used:\n\nUnity Karting Microgame\nThe Good Game Assets Stunt Ramps\nAdam Lutton's
+    RailGrind\nMellow Fox studios Building Pack\nHovl Studio Magic Effects\nYughues
+    Concrete Materials\n\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ffb8c3515fb6dc4688eff5a7e48200f, type: 2}
   m_sharedMaterial: {fileID: 7453642021753212536, guid: 1ffb8c3515fb6dc4688eff5a7e48200f,
