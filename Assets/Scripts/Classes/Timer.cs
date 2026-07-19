@@ -48,7 +48,7 @@ public class Timer : MonoBehaviour
     {
         if (countdown > 0)
         {
-            if(Input.GetAxis("TriggerRight") == 1 || Input.GetAxis("Pause") == 1!)
+            if(Input.GetAxis("TriggerRight") == 1 || Input.GetButtonDown("Pause"))
             {
                 if(!paused)
                 {

@@ -270,7 +270,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1259}
+  m_AnchoredPosition: {x: 0, y: -1301}
   m_SizeDelta: {x: 726.5753, y: 292.2139}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &200045467
@@ -2216,15 +2216,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: When you're in the air, your directional inputs will let you <color=green>pefrom
+  m_text: 'When you''re in the air, your directional inputs will let you <color=green>pefrom
     tricks and score points! </color>Use your <color=yellow>forward input </color>to
     perform a <color=green>flip </color>and your <color=yellow>backward input</color>
     to do a <color=green>back flip!</color> Use your <color=yellow>left and right
     inputs</color> to turn and perform a <color=green>360</color>. You can also score
     points by grinding <color=green>rails</color> and putting up <color=green>posters.</color>
     When on a <color=green>rail</color>, use your <color=yellow>left and right inputs
-    </color>to balance so you don't fall off. <b>Try to utilize different tricks
+    </color>to balance so you don''t fall off. <b>Try to utilize different tricks
     as much as you can to earn a higher score in the time limit!</b>
+
+
+    Use the
+    Esc key or the right trigger on your controller to pause the game!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ffb8c3515fb6dc4688eff5a7e48200f, type: 2}
   m_sharedMaterial: {fileID: 7453642021753212536, guid: 1ffb8c3515fb6dc4688eff5a7e48200f,
@@ -4696,7 +4700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &8707408059719826383
 MonoBehaviour:
   m_ObjectHideFlags: 0
