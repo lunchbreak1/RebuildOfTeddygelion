@@ -76,14 +76,22 @@ public class Timer : MonoBehaviour
         }
 
         player.Animate(0, 0, 0, 0);
-        player.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        player.OnRail = false;
+
+        if(player.OnRail)
+        {
+            playerGrind.StopRailCoroutine();
+            playerGrind.enabled = false;
+        }
+        else
+        {
+            player.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        }
+        
         player.enabled = false;
 
         kart.enabled = false;
 
-        playerGrind.StopRailCoroutine();
-        playerGrind.enabled = false;
+        
     }
 
     public void Unpause()
@@ -150,12 +158,18 @@ public class Timer : MonoBehaviour
 
     void UnfreezePlayer()
     {
-        player.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-
         player.enabled = true;
 
         kart.enabled = true;
 
-        playerGrind.enabled = true;
+        if (player.OnRail)
+        {
+            playerGrind.StartRailCoroutine();
+            playerGrind.enabled = true;
+        }
+        else
+        {
+            player.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        }
     }
 }
