@@ -24,6 +24,12 @@ public class Timer : MonoBehaviour
 
     public OptionsLayout saveMenuOptions;
 
+    public GameObject pauseMenu;
+
+    public bool paused = false;
+
+    public OptionsLayout pauseOptions;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,13 +46,51 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(countdown < 0)
+        if (countdown > 0)
+        {
+            if(Input.GetAxis("TriggerRight") == 1 || Input.GetAxis("Pause") == 1!)
+            {
+                if(!paused)
+                {
+                    Pause();
+                }
+            }
+        }
+
+        if(countdown <= 0)
         {
             StopTimerCoroutine();
         }
     }
 
-    IEnumerator RailScoreCoroutine()
+    public void Pause()
+    {
+        paused = true;
+        pauseMenu.SetActive(true);
+        pauseOptions.ChangeIndex(0);
+        //StopTimerCoroutine();
+
+        if (timerCoroutine != null)
+        {
+            StopCoroutine(timerCoroutine);
+            timerCoroutine = null;
+        }
+
+        //textMeshProUGUI.text = "Time's up! Here's your score: " + trickManager.score;
+        //saveMenu.gameObject.SetActive(true);
+        //saveMenuOptions.ChangeIndex(0);
+        FreezePlayer();
+    }
+
+    public void Unpause()
+    {
+        paused = false;
+        pauseMenu.SetActive(false);
+        StartTimerCoroutine();
+        UnfreezePlayer();
+    }
+
+    IEnumerator TimerCoroutine()
     {
         while (countdown > 0)
         {
@@ -60,15 +104,13 @@ public class Timer : MonoBehaviour
 
             yield return new WaitForSeconds(.01f);
         }
-
-        
     }
 
     void StartTimerCoroutine()
     {
         if (timerCoroutine == null)
         {
-            timerCoroutine = StartCoroutine(RailScoreCoroutine());
+            timerCoroutine = StartCoroutine(TimerCoroutine());
         }
     }
 
@@ -76,11 +118,9 @@ public class Timer : MonoBehaviour
     {
         if (timerCoroutine != null)
         {
-            //StopAllCoroutines();
             StopCoroutine(timerCoroutine);
             timerCoroutine = null;
         }
-
 
         textMeshProUGUI.text = "Time's up! Here's your score: " + trickManager.score;
         saveMenu.gameObject.SetActive(true);
@@ -106,17 +146,14 @@ public class Timer : MonoBehaviour
 
     void UnfreezePlayer()
     {
-        //player.Animate(0, 0, 0, 0);
         player.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-        //player.OnRail = false;
+
         player.enabled = true;
 
         kart.enabled = true;
 
-        //playerGrind.StopRailCoroutine();
         playerGrind.enabled = true;
 
-        //trickManager.HideTrickCounter();
         trickManager.enabled = true;
     }
 }
