@@ -102,7 +102,21 @@ public class Timer : MonoBehaviour
 
         trickManager.HideTrickCounter();
         trickManager.enabled = false;
-        
+    }
+
+    void UnfreezePlayer()
+    {
+        //player.Animate(0, 0, 0, 0);
+        player.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        //player.OnRail = false;
+        player.enabled = true;
+
+        kart.enabled = true;
+
+        //playerGrind.StopRailCoroutine();
+        playerGrind.enabled = true;
+
         //trickManager.HideTrickCounter();
+        trickManager.enabled = true;
     }
 }
