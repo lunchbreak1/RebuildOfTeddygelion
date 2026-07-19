@@ -68,7 +68,6 @@ public class Timer : MonoBehaviour
         paused = true;
         pauseMenu.SetActive(true);
         pauseOptions.ChangeIndex(0);
-        //StopTimerCoroutine();
 
         if (timerCoroutine != null)
         {
@@ -85,9 +84,6 @@ public class Timer : MonoBehaviour
 
         playerGrind.StopRailCoroutine();
         playerGrind.enabled = false;
-
-        //trickManager.HideTrickCounter();
-        //trickManager.enabled = false;
     }
 
     public void Unpause()
@@ -161,7 +157,5 @@ public class Timer : MonoBehaviour
         kart.enabled = true;
 
         playerGrind.enabled = true;
-
-        trickManager.enabled = true;
     }
 }
