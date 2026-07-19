@@ -52,6 +52,8 @@ public class PlayerGrind : MonoBehaviour
 
     private Coroutine railScoreCoroutine;
 
+    public bool paused = false;
+
 
     private void Start()
     {
@@ -268,7 +270,10 @@ public class PlayerGrind : MonoBehaviour
     {
         while (onRail)
         {
-            trickManager.ScoreRailPoints(railPoints);
+            if (!paused)
+            {
+                trickManager.ScoreRailPoints(railPoints);
+            }           
 
             yield return new WaitForSeconds(1f);
         }
