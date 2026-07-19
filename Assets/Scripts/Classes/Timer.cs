@@ -79,7 +79,7 @@ public class Timer : MonoBehaviour
 
         if(player.OnRail)
         {
-            playerGrind.StopRailCoroutine();
+            playerGrind.onRail = false;
             playerGrind.enabled = false;
         }
         else
@@ -164,7 +164,7 @@ public class Timer : MonoBehaviour
 
         if (player.OnRail)
         {
-            playerGrind.StartRailCoroutine();
+            playerGrind.onRail = true;
             playerGrind.enabled = true;
         }
         else
