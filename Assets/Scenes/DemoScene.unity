@@ -14065,6 +14065,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pipe_WoodRamps
       objectReference: {fileID: 0}
+    - target: {fileID: 3859855567601877193, guid: 0fc4992c350d94a44a5645a1b3dcdc58,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4529256304619362931, guid: 0fc4992c350d94a44a5645a1b3dcdc58,
         type: 3}
       propertyPath: m_RootOrder
@@ -14140,6 +14145,12 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8196744995598163184, guid: 0fc4992c350d94a44a5645a1b3dcdc58,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: a46ba4e273ba0684f90f4acc0fdf44d5,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
