@@ -10,7 +10,7 @@ public class VersionNumber : MonoBehaviour
     void Start()
     {
         versionText = GetComponent<TextMeshProUGUI>();
-        versionText.text = $"Version: {Application.version}";
+        versionText.text = $"<color=yellow>Version: {Application.version}</color>";
     }
 
     // Update is called once per frame

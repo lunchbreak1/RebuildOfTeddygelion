@@ -3,6 +3,7 @@ using UnityEngine;
 public class MusicPlayer : MonoBehaviour
 {
     private static MusicPlayer instance;
+    private static AudioSource musicSource;
 
     private void Awake()
     {
@@ -13,6 +14,17 @@ public class MusicPlayer : MonoBehaviour
         }
 
         instance = this;
+        musicSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(gameObject);
+    }
+
+    public static void SetVolume(float volume)
+    {
+        musicSource.volume = volume;
+    }
+
+    public static float GetVolume()
+    {
+        return musicSource.volume;
     }
 }
