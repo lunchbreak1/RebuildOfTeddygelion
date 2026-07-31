@@ -91,6 +91,8 @@ public class Timer : MonoBehaviour
 
         kart.enabled = false;
 
+        trickManager.enabled = false;
+
         
     }
 
