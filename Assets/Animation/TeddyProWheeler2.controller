@@ -11,9 +11,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: Horizontal
     m_EventTreshold: 0
-  - m_ConditionMode: 4
-    m_ConditionEvent: Accelerate
-    m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5901809224213573364}
   m_Solo: 0
@@ -245,6 +242,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: Accelerate
     m_EventTreshold: 0.1
+  - m_ConditionMode: 4
+    m_ConditionEvent: Vertical
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8206478424847105181}
   m_Solo: 0
@@ -322,6 +322,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 3
     m_ConditionEvent: Accelerate
     m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: Vertical
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5399814217342356132}
   m_Solo: 0
@@ -344,9 +347,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 4
-    m_ConditionEvent: Accelerate
-    m_EventTreshold: 0.1
   - m_ConditionMode: 3
     m_ConditionEvent: Horizontal
     m_EventTreshold: 0
