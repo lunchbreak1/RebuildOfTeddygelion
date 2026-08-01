@@ -102,6 +102,7 @@ public class Timer : MonoBehaviour
         pauseMenu.SetActive(false);
         StartTimerCoroutine();
         UnfreezePlayer();
+        trickManager.enabled = true;
     }
 
     IEnumerator TimerCoroutine()
