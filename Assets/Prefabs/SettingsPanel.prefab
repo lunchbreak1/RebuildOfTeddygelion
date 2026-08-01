@@ -807,6 +807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volume: 0.5
   volumeSlider: {fileID: 1556053685671071131}
+  fillArea: {fileID: 1676935306591529239}
 --- !u!1 &8558963327596463554
 GameObject:
   m_ObjectHideFlags: 0

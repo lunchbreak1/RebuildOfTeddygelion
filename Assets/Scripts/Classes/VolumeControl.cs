@@ -11,6 +11,9 @@ public class VolumeControl : MonoBehaviour
     [SerializeField]
     private UnityEngine.UI.Slider volumeSlider;
     // Start is called before the first frame update
+
+    [SerializeField]
+    private UnityEngine.UI.Image fillArea;
     void Start()
     {
         volumeSlider = GetComponentInChildren<UnityEngine.UI.Slider>();
@@ -26,5 +29,15 @@ public class VolumeControl : MonoBehaviour
 
         MusicPlayer.SetVolume(volume);
         volumeSlider.value = volume;
+
+        if(volume > 0 && !fillArea.enabled)
+        {
+            fillArea.enabled = true;
+        }
+
+        if (volume == 0 && fillArea.enabled)
+        {
+            fillArea.enabled = false;
+        }
     }
 }
