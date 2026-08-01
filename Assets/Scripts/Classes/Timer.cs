@@ -107,9 +107,10 @@ public class Timer : MonoBehaviour
 
     IEnumerator TimerCoroutine()
     {
-        while (countdown > 0)
+        while (countdown > 0f)
         {
-            countdown-= .01f;
+            countdown -= Time.deltaTime;
+            countdown = Mathf.Max(0f, countdown);
 
             int minutes = Mathf.FloorToInt(countdown / 60f);
             int seconds = Mathf.FloorToInt(countdown % 60f);
@@ -117,8 +118,10 @@ public class Timer : MonoBehaviour
 
             textMeshProUGUI.text = $"{minutes:00}:{seconds:00}.{hundredths:00}";
 
-            yield return new WaitForSeconds(.01f);
+            yield return null;
         }
+
+        StopTimerCoroutine();
     }
 
     void StartTimerCoroutine()
