@@ -72,7 +72,7 @@ public class WheelchairController : MonoBehaviour
     {
         if (grounded)
         {
-            body.AddForce(Vector3.up * jumpPower * jumpPress);
+            body.AddForce(Vector3.up * jumpPower * jumpPress, ForceMode.Impulse);
         }
     }
 
