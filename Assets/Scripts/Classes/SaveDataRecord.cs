@@ -23,6 +23,7 @@ public class SaveDataRecord : MonoBehaviour
     public TextMeshProUGUI threeSixtiesText;
     public TextMeshProUGUI flipsText;
     public TextMeshProUGUI backflipsText;
+    public TextMeshProUGUI corkscrewsText;
     public TextMeshProUGUI wipeoutsText;
     public TextMeshProUGUI railGrindsText;
     public TextMeshProUGUI fallOffRailsText;
@@ -39,6 +40,7 @@ public class SaveDataRecord : MonoBehaviour
         SetText(data.threeSixties, threeSixtiesText);
         SetText(data.flips, flipsText);
         SetText(data.backFlips, backflipsText);
+        SetText(data.corkscrews, corkscrewsText);
         SetText(data.wipeouts, wipeoutsText);
         SetText(data.railGrinds, railGrindsText);
         SetText(data.fallOffRails, fallOffRailsText);

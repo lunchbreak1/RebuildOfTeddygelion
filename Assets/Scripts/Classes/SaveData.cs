@@ -7,6 +7,7 @@ public class SaveData
     public int threeSixties;
     public int flips;
     public int backFlips;
+    public int corkscrews;
     public int wipeouts;
     public int railGrinds;
     public int fallOffRails;
@@ -14,7 +15,7 @@ public class SaveData
     public int collectables;
 
 
-    public SaveData(string name, float newScore, string levelName, int threeSixties, int flips, int backFlips, int wipeouts, int railGrinds, int fallOffRails, int posters, int collectables)
+    public SaveData(string name, float newScore, string levelName, int threeSixties, int flips, int backFlips, int corkscrews, int wipeouts, int railGrinds, int fallOffRails, int posters, int collectables)
     {
         playerName = name;
         score = newScore;
@@ -22,6 +23,7 @@ public class SaveData
         this.threeSixties = threeSixties;
         this.flips = flips;
         this.backFlips = backFlips;
+        this.corkscrews = corkscrews;
         this.wipeouts = wipeouts;
         this.railGrinds = railGrinds;
         this.fallOffRails = fallOffRails;

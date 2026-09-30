@@ -48,7 +48,7 @@ public class SaveMenu : MonoBehaviour
         {
             Debug.Log("Here's your name: " + playerName.text);
             SaveData data = new SaveData(playerName.text, trickManager.score, SceneManager.GetActiveScene().name,
-                trickManager.overall360Combos, trickManager.overallFlipCombos, trickManager.overallBackFlipCombos,
+                trickManager.overall360Combos, trickManager.overallFlipCombos, trickManager.overallBackFlipCombos, trickManager.overallCorkscrewCombos,
                 trickManager.overallWipeouts, trickManager.overallRailGrinds, trickManager.overallRailFalls, wheelchairController.posters, trickManager.collectables);
             saves.Add(data);
             SaveManager.SaveAll(saves);
