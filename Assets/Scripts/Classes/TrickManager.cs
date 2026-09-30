@@ -79,7 +79,9 @@ public class TrickManager : MonoBehaviour
 
     float railPoints = 0;
 
-    
+    public bool trickButtonHeld = false;
+
+
 
     // Start is called before the first frame update
     private void Start()
@@ -175,12 +177,15 @@ public class TrickManager : MonoBehaviour
         {
             float horizontal = Input.GetAxisRaw("Horizontal");  // A/D or Left/Right arrow keys
             float vertical = Input.GetAxisRaw("Vertical");      // W/S or Up/Down arrow keys
+            float trick = Input.GetAxisRaw("Trick");
 
             // Combine into a Vector2
             moveDirection = new Vector2(horizontal, vertical);
 
             // Normalize the direction so it's always of unit length (magnitude of 1)
             moveDirection.Normalize();
+
+            trickButtonHeld = (trick > 0);
         }
     }
 
@@ -188,9 +193,18 @@ public class TrickManager : MonoBehaviour
     {
         if(!grounded && !onRail)
         {
-            airXRotation += moveDirection.x * turnSpeedX;
+            
 
-            airYRotation += moveDirection.y * turnSpeedY;
+            if(trickButtonHeld)
+            {
+                //add corkscrew logic here
+                airYRotation += moveDirection.y * turnSpeedY;
+            }
+            else
+            {
+                airXRotation += moveDirection.x * turnSpeedX;
+            }
+            
 
             PerformTrick();
         }

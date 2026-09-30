@@ -43,6 +43,8 @@ public class WheelchairController : MonoBehaviour
 
     public bool OnRail = false;
 
+    public bool trickButtonHeld = false;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -87,6 +89,7 @@ public class WheelchairController : MonoBehaviour
         float accelerate = Input.GetAxisRaw("Accelerate");
         float brake = Input.GetAxisRaw("Brake");// W/S or Up/Down arrow keys
         float jump = Input.GetAxisRaw("Jump");
+        float trick = Input.GetAxisRaw("Trick");
 
         // Combine into a Vector2
         moveDirection = new Vector2(horizontal, vertical);
@@ -108,6 +111,7 @@ public class WheelchairController : MonoBehaviour
             }
         }
 
+        trickButtonHeld = (trick > 0);
     }
 
     /// <summary>
@@ -118,9 +122,16 @@ public class WheelchairController : MonoBehaviour
         // If the player is not on the ground, they can freely rotate.
         if (!grounded && !OnRail)
         {
-            transform.RotateAround(transform.position, Vector3.up, moveDirection.x * turnSpeedHorizontal);
+            if(trickButtonHeld)
+            {
+                transform.RotateAround(transform.position, Vector3.forward, moveDirection.x * turnSpeedHorizontal);
 
-            transform.RotateAround(transform.position, transform.right.normalized, moveDirection.y * turnSpeedVertical);
+                transform.RotateAround(transform.position, transform.right.normalized, moveDirection.y * turnSpeedVertical);
+            }
+            else
+            {
+                transform.RotateAround(transform.position, Vector3.up, moveDirection.x * turnSpeedHorizontal);
+            }
         }
     }
 
