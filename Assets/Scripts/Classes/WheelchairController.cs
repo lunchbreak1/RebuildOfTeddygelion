@@ -124,7 +124,7 @@ public class WheelchairController : MonoBehaviour
         {
             if(trickButtonHeld)
             {
-                transform.RotateAround(transform.position, Vector3.forward, moveDirection.x * turnSpeedHorizontal);
+                transform.RotateAround(transform.position, transform.forward.normalized, moveDirection.x * turnSpeedHorizontal);
 
                 transform.RotateAround(transform.position, transform.right.normalized, moveDirection.y * turnSpeedVertical);
             }

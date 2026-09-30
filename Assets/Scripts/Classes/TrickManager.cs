@@ -19,11 +19,17 @@ public class TrickManager : MonoBehaviour
     [Tooltip("How many backflips the player did before touching the ground.")]
     int backFlips = 0;
 
+    [Tooltip("How many corkscrews the player did before touching the ground.")]
+    int corkscrews = 0;
+
     [Tooltip("How many degrees are needed to do a flip.")]
     public float degreesForFlip = 360 * 2;
 
     [Tooltip("How many degrees are needed to do a 360.")]
     public float degreesFor360 = 360;
+
+    [Tooltip("How many degrees are needed to do a corkscrew.")]
+    public float degreesForCorkscrew = 360;
 
     [Tooltip("How many points are awarded for a 360.")]
     public float point360;
@@ -33,6 +39,9 @@ public class TrickManager : MonoBehaviour
 
     [Tooltip("How many points are awarded for a back flip.")]
     public float pointBackFlip;
+
+    [Tooltip("How many points are awarded for a corkscrew.")]
+    public float pointCorkscrews;
 
     [Tooltip("This value dampens the points earned by consecutive tricks to prevent spamming.")]
     public float consecutiveComboDampenFactor = 0.75f;
@@ -50,10 +59,12 @@ public class TrickManager : MonoBehaviour
     private int consecutiveFlipCombos = 0;
     private int consecutiveBackFlipCombos = 0;
     private int consecutiveRailGrinds = 0;
+    private int consecutiveCorkscrews = 0;
 
     public int overall360Combos = 0;
     public int overallFlipCombos = 0;
     public int overallBackFlipCombos = 0;
+    public int overallCorkscrewCombos = 0;
     public int overallRailGrinds = 0;
     public int overallWipeouts = 0;
     public int overallRailFalls = 0;
@@ -61,6 +72,7 @@ public class TrickManager : MonoBehaviour
 
     public float airTurnSpeedX;
     public float airTurnSpeedY;
+    public float airTurnSpeedZ;
 
     float totalPoints;
 
@@ -73,6 +85,9 @@ public class TrickManager : MonoBehaviour
     [Tooltip("The amount the player has flipped in the air in degrees.")]
     public float airYRotation = 0;
 
+    [Tooltip("The amount the player has flipped in the air in degrees.")]
+    public float airZRotation = 0;
+
     Vector2 moveDirection = Vector2.zero;
 
     public bool onRail = false;
@@ -80,8 +95,6 @@ public class TrickManager : MonoBehaviour
     float railPoints = 0;
 
     public bool trickButtonHeld = false;
-
-
 
     // Start is called before the first frame update
     private void Start()
@@ -114,7 +127,7 @@ public class TrickManager : MonoBehaviour
     {
         if(threeSixties > 0)
         {
-            if (flips == 0 && backFlips == 0)
+            if (flips == 0 && backFlips == 0 && corkscrews == 0)
             {
                 consecutive360Combos++;
             }
@@ -124,11 +137,13 @@ public class TrickManager : MonoBehaviour
             consecutiveFlipCombos = 0;
 
             consecutiveBackFlipCombos = 0;
+
+            consecutiveCorkscrews = 0;
         }
 
         if (flips > 0)
         {
-            if(threeSixties == 0 && backFlips == 0)
+            if(threeSixties == 0 && backFlips == 0 && corkscrews == 0)
             {
                 consecutiveFlipCombos++;
             }
@@ -139,11 +154,13 @@ public class TrickManager : MonoBehaviour
 
             consecutiveBackFlipCombos = 0;
 
+            consecutiveCorkscrews = 0;
+
         }
 
         if (backFlips > 0)
         {
-            if(threeSixties == 0 && flips == 0)
+            if(threeSixties == 0 && flips == 0 && corkscrews == 0)
             {
                 consecutiveBackFlipCombos++;
             }
@@ -153,9 +170,27 @@ public class TrickManager : MonoBehaviour
             consecutive360Combos = 0;
 
             consecutiveFlipCombos = 0;
+
+            consecutiveCorkscrews = 0;
         }
 
-        if(threeSixties > 0 || flips > 0 ||  backFlips > 0)
+        if (corkscrews > 0)
+        {
+            if (threeSixties == 0 && flips == 0 && backFlips == 0)
+            {
+                consecutiveCorkscrews++;
+            }
+
+            overallCorkscrewCombos += corkscrews;
+
+            consecutiveFlipCombos = 0;
+
+            consecutive360Combos = 0;
+
+            consecutiveFlipCombos = 0;
+        }
+
+        if (threeSixties > 0 || flips > 0 ||  backFlips > 0 || corkscrews > 0)
         {
             consecutiveRailGrinds = 0;
         }
@@ -166,6 +201,7 @@ public class TrickManager : MonoBehaviour
         threeSixties = 0;
         flips = 0;
         backFlips = 0;
+        corkscrews = 0;
         totalPoints = 0;
         airXRotation = 0;
         airYRotation = 0;
@@ -198,7 +234,9 @@ public class TrickManager : MonoBehaviour
             if(trickButtonHeld)
             {
                 //add corkscrew logic here
+                airZRotation += moveDirection.x * turnSpeedX;
                 airYRotation += moveDirection.y * turnSpeedY;
+                
             }
             else
             {
@@ -246,7 +284,14 @@ public class TrickManager : MonoBehaviour
             newTrick = true;
         }
 
-        if(newTrick)
+        if (Mathf.Abs(airZRotation) >= degreesForCorkscrew)
+        {
+            corkscrews++;
+            airZRotation = 0;
+            newTrick = true;
+        }
+
+        if (newTrick)
         {
             WriteScore();
         }
@@ -279,6 +324,8 @@ public class TrickManager : MonoBehaviour
 
         float backflipTotalPoints = Mathf.Round(backFlips * pointBackFlip * (Mathf.Pow(consecutiveComboDampenFactor, consecutiveBackFlipCombos)));
 
+        float corkscrewTotalPoints = Mathf.Round(corkscrews * pointCorkscrews * (Mathf.Pow(consecutiveComboDampenFactor, consecutiveCorkscrews)));
+
         if (threeSixties > 0)
         {
             message += "Outrageous 360! x" + threeSixties + " = " + threeSixtyTotalPoints + "\n";
@@ -294,7 +341,12 @@ public class TrickManager : MonoBehaviour
             message += "Great back flip! x" + backFlips + " = " + backflipTotalPoints + "\n";
         }
 
-        totalPoints = threeSixtyTotalPoints + flipTotalPoints + backflipTotalPoints;
+        if (corkscrews > 0)
+        {
+            message += "Beautiful corkscrew! x" + corkscrews + " = " + corkscrewTotalPoints + "\n";
+        }
+
+        totalPoints = threeSixtyTotalPoints + flipTotalPoints + backflipTotalPoints + corkscrewTotalPoints;
 
         if (totalPoints > 0)
         {
@@ -337,6 +389,7 @@ public class TrickManager : MonoBehaviour
         consecutive360Combos = 0;
         consecutiveFlipCombos = 0;
         consecutiveBackFlipCombos = 0;
+        consecutiveCorkscrews = 0;
         overallRailGrinds++;
     }
 
