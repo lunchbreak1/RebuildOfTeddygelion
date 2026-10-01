@@ -130,7 +130,7 @@ public class WheelchairController : MonoBehaviour
             }
             else
             {
-                transform.RotateAround(transform.position, Vector3.up, moveDirection.x * turnSpeedHorizontal);
+                transform.RotateAround(transform.position, transform.up.normalized, moveDirection.x * turnSpeedHorizontal);
             }
         }
     }
