@@ -8,6 +8,10 @@ public class PosterManager : MonoBehaviour
     private int maxPosters = 10;
     private TextMeshProUGUI TextMeshProUGUI;
     private WheelchairController wheelchairController;
+    public string xBoxInstructions;
+    public string keyboardInstructions;
+    private string instructions;
+    private ControllerMode controllerMode;
 
     // Start is called before the first frame update
     void Start()
@@ -15,8 +19,9 @@ public class PosterManager : MonoBehaviour
         maxPosters = FindObjectsOfType<Poster>().Length;
         TextMeshProUGUI = GetComponent<TextMeshProUGUI>();
         wheelchairController = FindObjectOfType<WheelchairController>();
+        controllerMode = FindObjectOfType<ControllerMode>();
 
-        if(maxPosters == 0)
+        if (maxPosters == 0)
         {
             Debug.LogWarning("Can't find posters");
         }
@@ -30,16 +35,38 @@ public class PosterManager : MonoBehaviour
         {
             Debug.LogWarning("Can't find textmesh");
         }
+
+        if (controllerMode == null)
+        {
+            Debug.LogWarning("Can't find controller mode");
+        }
+        else
+        {
+            controllerMode.ControllerConnected += ShowXboxControls;
+            controllerMode.ControllerDisconnected += ShowKeyboardControls;
+        }
+
+        instructions = keyboardInstructions;
     }
 
     // Update is called once per frame
     public void SetPosterMessage()
     {
-        TextMeshProUGUI.text = wheelchairController.posters > 0 ? "Posters: " + wheelchairController.posters + " / " + maxPosters : "Press the X key or east button to put up a poster!"; 
+        TextMeshProUGUI.text = wheelchairController.posters > 0 ? "Posters: " + wheelchairController.posters + " / " + maxPosters : instructions; 
     }
 
     public void ClearPosterMessage()
     {
         TextMeshProUGUI.text = "";
+    }
+
+    public void ShowXboxControls()
+    {
+        instructions = xBoxInstructions;
+    }
+
+    public void ShowKeyboardControls()
+    {
+        instructions = keyboardInstructions;
     }
 }

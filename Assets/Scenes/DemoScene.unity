@@ -8893,6 +8893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37244f66a2fbb074986722ed1c40d263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scheme: 0
 --- !u!4 &849131534
 Transform:
   m_ObjectHideFlags: 0
@@ -18397,6 +18398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f236159cb61c35140a842c289a2fd183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xBoxInstructions: Press the B button to put up a poster!
+  keyboardInstructions: Press the C key to put up a poster!
 --- !u!4 &1724040505 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4557009200296833809, guid: b0b7847c186e60144957b95b1b5e826d,

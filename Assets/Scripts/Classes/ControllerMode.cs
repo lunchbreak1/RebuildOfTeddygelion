@@ -6,6 +6,9 @@ public class ControllerMode : MonoBehaviour
 {
     public ControllerScheme scheme = ControllerScheme.MouseAndKeyboard;
 
+    public event System.Action ControllerConnected;
+    public event System.Action ControllerDisconnected;
+
     private string[] xboxAxes =
     {
         "Xbox_Buttons",
@@ -27,6 +30,7 @@ public class ControllerMode : MonoBehaviour
 
         return false;
     }
+
 
     private bool KeyboardInputDetected()
     {
@@ -58,24 +62,41 @@ public class ControllerMode : MonoBehaviour
                !Input.GetMouseButton(2);
     }
 
+    private bool IsControllerConnected()
+    {
+        string[] joysticks = Input.GetJoystickNames();
+
+        foreach (string joystick in joysticks)
+        {
+            if (!string.IsNullOrEmpty(joystick))
+                return true;
+        }
+
+        return false;
+    }
+
     // Update is called once per frame
     void Update()
     {
         switch(scheme)
         {
             case ControllerScheme.MouseAndKeyboard:
-                if (XboxInputDetected() && KeyboardInputNotDetected())
+                //if (XboxInputDetected() && KeyboardInputNotDetected() && (Input.anyKeyDown || Input.anyKey))
+                if(IsControllerConnected())
                 {
                     Debug.Log("ControlMode: XBOX CONTROLLER DETECTED");
                     scheme = ControllerScheme.XboxController;
+                    ControllerConnected?.Invoke();        
                 }
                 break;
 
             case ControllerScheme.XboxController:
-                if (KeyboardInputDetected())
+                //if (KeyboardInputDetected())
+                if (!IsControllerConnected())
                 {
                     Debug.Log("ControlMode: MOUSE AND KEYBOARD DETECTED");
                     scheme = ControllerScheme.MouseAndKeyboard;
+                    ControllerDisconnected?.Invoke();
                 }
             break;
 
