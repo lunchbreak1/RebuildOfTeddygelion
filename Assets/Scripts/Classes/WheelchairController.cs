@@ -88,7 +88,7 @@ public class WheelchairController : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         float accelerate = Input.GetAxisRaw("Accelerate");
         float brake = Input.GetAxisRaw("Brake");// W/S or Up/Down arrow keys
-        float jump = Input.GetAxisRaw("Jump");
+        
         float trick = Input.GetAxisRaw("Trick");
 
         // Combine into a Vector2
@@ -105,10 +105,6 @@ public class WheelchairController : MonoBehaviour
         {
             Animate(horizontal, vertical, accelerate, brake);
 
-            if (jump > 0)
-            {
-                Jump(jump);
-            }
         }
 
         trickButtonHeld = (trick > 0);
@@ -132,6 +128,13 @@ public class WheelchairController : MonoBehaviour
             {
                 transform.RotateAround(transform.position, transform.up.normalized, moveDirection.x * turnSpeedHorizontal);
             }
+        }
+
+        float jump = Input.GetAxisRaw("Jump");
+
+        if (jump > 0)
+        {
+            Jump(jump);
         }
     }
 
