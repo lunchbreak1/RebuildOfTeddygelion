@@ -8894,8 +8894,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scheme: 0
-  keyboardObjects: []
-  controllerObjects: []
+  keyboardObjects:
+  - {fileID: 1703949064}
+  controllerObjects:
+  - {fileID: 1209765446}
 --- !u!4 &849131534
 Transform:
   m_ObjectHideFlags: 0
@@ -12985,6 +12987,12 @@ GameObject:
 --- !u!224 &1209765445 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8818910841367501992, guid: 239557a05426c5c4a9cf06a301ec8446,
+    type: 3}
+  m_PrefabInstance: {fileID: 1209765443}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1209765446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3554373532259973462, guid: 239557a05426c5c4a9cf06a301ec8446,
     type: 3}
   m_PrefabInstance: {fileID: 1209765443}
   m_PrefabAsset: {fileID: 0}
@@ -18174,6 +18182,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0140a77d424588448c8f11519fbb098, type: 3}
+--- !u!1 &1703949064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2630526215868160525, guid: 239557a05426c5c4a9cf06a301ec8446,
+    type: 3}
+  m_PrefabInstance: {fileID: 1209765443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1722371648
 GameObject:
   m_ObjectHideFlags: 0
