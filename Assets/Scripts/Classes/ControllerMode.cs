@@ -9,6 +9,10 @@ public class ControllerMode : MonoBehaviour
     public event System.Action ControllerConnected;
     public event System.Action ControllerDisconnected;
 
+    public List<GameObject> keyboardObjects = new List<GameObject>();
+    public List<GameObject> controllerObjects = new List<GameObject>();
+
+
     private string[] xboxAxes =
     {
         "Xbox_Buttons",
@@ -87,6 +91,8 @@ public class ControllerMode : MonoBehaviour
                     Debug.Log("ControlMode: XBOX CONTROLLER DETECTED");
                     scheme = ControllerScheme.XboxController;
                     ControllerConnected?.Invoke();        
+                    ToggleObjects(keyboardObjects, false);
+                    ToggleObjects(controllerObjects, true);
                 }
                 break;
 
@@ -97,14 +103,24 @@ public class ControllerMode : MonoBehaviour
                     Debug.Log("ControlMode: MOUSE AND KEYBOARD DETECTED");
                     scheme = ControllerScheme.MouseAndKeyboard;
                     ControllerDisconnected?.Invoke();
+                    ToggleObjects(keyboardObjects, true);
+                    ToggleObjects(controllerObjects, false);
                 }
             break;
-
-
         }
         
     }
+
+    void ToggleObjects(List<GameObject> objects, bool value)
+    {
+        foreach (GameObject obj in objects)
+        {
+            obj.SetActive(value);
+        }
+    }
 }
+
+
 
 public enum ControllerScheme
 {

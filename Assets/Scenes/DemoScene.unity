@@ -8894,6 +8894,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scheme: 0
+  keyboardObjects: []
+  controllerObjects: []
 --- !u!4 &849131534
 Transform:
   m_ObjectHideFlags: 0
