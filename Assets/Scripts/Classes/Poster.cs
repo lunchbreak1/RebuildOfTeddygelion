@@ -72,7 +72,7 @@ public class Poster : MonoBehaviour
     {
         if (playerNearby)
         {
-            if(Input.GetAxis("Interact") > 0)
+            if(Input.GetAxis("Interact") > 0 && trickManager.enabled)
             {
                 PutUpPoster();
             }
