@@ -699,6 +699,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8450155512f09f9439e3bcf656aef80a, type: 3}
+--- !u!114 &91144188 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6691645748356329552, guid: 4366ba6a4d5213d4f9fc7bba3e778799,
+    type: 3}
+  m_PrefabInstance: {fileID: 926495315}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &98840867 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4557009200296833809, guid: b0b7847c186e60144957b95b1b5e826d,
@@ -6793,6 +6805,11 @@ PrefabInstance:
       propertyPath: turnSpeed
       value: 7.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1484162105646370607, guid: 82169b6efa7cfd844868115ac293dc92,
+        type: 3}
+      propertyPath: virtualCamera
+      value: 
+      objectReference: {fileID: 91144188}
     - target: {fileID: 1484162105646370607, guid: 82169b6efa7cfd844868115ac293dc92,
         type: 3}
       propertyPath: turnSpeedVertical

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
+using Unity.Cinemachine.TargetTracking;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -45,6 +47,15 @@ public class WheelchairController : MonoBehaviour
 
     public bool trickButtonHeld = false;
 
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
+
+    private CinemachineTransposer transposer;
+
+    private void Awake()
+    {
+        transposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
+    }
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -59,6 +70,7 @@ public class WheelchairController : MonoBehaviour
     {
         grounded = true;
         trickManager.EndTrick();
+        SetCameraOrbit(true);
     }
 
     /// <summary>
@@ -68,6 +80,7 @@ public class WheelchairController : MonoBehaviour
     {
         grounded = false;
         trickManager.StartTrick();
+        SetCameraOrbit(false);
     }
 
     public void Jump(float jumpPress)
@@ -150,5 +163,17 @@ public class WheelchairController : MonoBehaviour
         anim.SetFloat("Vertical", vertical);
         anim.SetFloat("Accelerate", vertical);
         anim.SetFloat("Brake", vertical);
+    }
+
+    public void SetCameraOrbit(bool orbit)
+    {
+        if (orbit)
+        {
+            transposer.m_BindingMode = BindingMode.LockToTargetWithWorldUp;
+        }
+        else
+        {
+            transposer.m_BindingMode = BindingMode.LazyFollow;
+        }
     }
 }
