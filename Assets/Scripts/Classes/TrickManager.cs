@@ -305,7 +305,7 @@ public class TrickManager : MonoBehaviour
 
     public void Wipeout()
     {
-        if(!grounded)
+        if(!grounded && totalPoints > 0)
         {
             ClearTrickPointCounter();
             WriteToTrickCounter("<color=red><shake>Wipeout!</color></shake>", messageDuration);
