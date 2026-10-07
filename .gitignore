@@ -28,3 +28,4 @@
 /UnityEngine.UI.Player.csproj
 Build/*
 Builds/*
+Installer/*.exe
