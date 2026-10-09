@@ -1,5 +1,5 @@
 #define MyAppName "Teddy Cosmos' Pro Wheeler 2"
-#define MyAppVersion "0.0.8"
+#define MyAppVersion "0.0.9"
 #define MyAppPublisher "Unity"
 #define MyAppExeName "TeddyProWheeler2.exe"
 #define MyBuildFolder "C:\Users\iank1\source\repos\RebuildOfTeddygelion\Builds\TeddyProWheeler2"
