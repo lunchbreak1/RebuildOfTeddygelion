@@ -13,7 +13,6 @@ public class PosterManager : MonoBehaviour
     private string instructions;
     private ControllerMode controllerMode;
 
-    // Start is called before the first frame update
     void Start()
     {
         maxPosters = FindObjectsOfType<Poster>().Length;

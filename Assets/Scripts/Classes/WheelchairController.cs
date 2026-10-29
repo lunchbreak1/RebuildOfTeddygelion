@@ -96,7 +96,6 @@ public class WheelchairController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        // Get horizontal and vertical input
         float horizontal = Input.GetAxisRaw("Horizontal");  // A/D or Left/Right arrow keys
         float vertical = Input.GetAxisRaw("Vertical");
         float accelerate = Input.GetAxisRaw("Accelerate");
@@ -104,10 +103,8 @@ public class WheelchairController : MonoBehaviour
         
         float trick = Input.GetAxisRaw("Trick");
 
-        // Combine into a Vector2
         moveDirection = new Vector2(horizontal, vertical);
 
-        // Normalize the direction so it's always of unit length (magnitude of 1)
         moveDirection.Normalize();
 
         if (OnRail)
@@ -123,12 +120,8 @@ public class WheelchairController : MonoBehaviour
         trickButtonHeld = (trick > 0);
     }
 
-    /// <summary>
-    /// Runs once per second.
-    /// </summary>
     void FixedUpdate()
     {
-        // If the player is not on the ground, they can freely rotate.
         if (!grounded && !OnRail)
         {
             if(trickButtonHeld)

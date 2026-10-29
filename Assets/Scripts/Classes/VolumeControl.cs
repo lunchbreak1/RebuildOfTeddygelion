@@ -10,7 +10,7 @@ public class VolumeControl : MonoBehaviour
 
     [SerializeField]
     private UnityEngine.UI.Slider volumeSlider;
-    // Start is called before the first frame update
+
 
     [SerializeField]
     private UnityEngine.UI.Image fillArea;
@@ -20,7 +20,7 @@ public class VolumeControl : MonoBehaviour
         volume = MusicPlayer.GetVolume();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal") / 100;

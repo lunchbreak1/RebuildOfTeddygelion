@@ -211,14 +211,12 @@ public class TrickManager : MonoBehaviour
     {
         if(!grounded && !onRail)
         {
-            float horizontal = Input.GetAxisRaw("Horizontal");  // A/D or Left/Right arrow keys
-            float vertical = Input.GetAxisRaw("Vertical");      // W/S or Up/Down arrow keys
+            float horizontal = Input.GetAxisRaw("Horizontal");  
+            float vertical = Input.GetAxisRaw("Vertical");      
             float trick = Input.GetAxisRaw("Trick");
 
-            // Combine into a Vector2
             moveDirection = new Vector2(horizontal, vertical);
 
-            // Normalize the direction so it's always of unit length (magnitude of 1)
             moveDirection.Normalize();
 
             trickButtonHeld = (trick > 0);
@@ -233,7 +231,6 @@ public class TrickManager : MonoBehaviour
 
             if(trickButtonHeld)
             {
-                //add corkscrew logic here
                 airZRotation += moveDirection.x * turnSpeedX;
                 airYRotation += moveDirection.y * turnSpeedY;
                 
@@ -253,7 +250,6 @@ public class TrickManager : MonoBehaviour
         trickCounter.gameObject.SetActive(true);
     }
 
-    // Update is called once per frame
     public void HideTrickCounter()
     {
         trickCounter.text = "";

@@ -7,7 +7,7 @@ public class InstructionPanel : MonoBehaviour
     public GameObject keyboardInstructions;
     public GameObject xBoxInstructions;
     ControllerMode controllerMode;
-    // Start is called before the first frame update
+
     void Start()
     {
         controllerMode = FindObjectOfType<ControllerMode>();

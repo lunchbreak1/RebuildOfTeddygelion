@@ -26,8 +26,6 @@ public class Collectabile : MonoBehaviour
     [Tooltip("The object that handles the player's score")]
     TrickManager trickManager;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         trickManager = FindObjectOfType<TrickManager>();

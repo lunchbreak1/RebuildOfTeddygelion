@@ -79,13 +79,11 @@ public class ControllerMode : MonoBehaviour
         return false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         switch(scheme)
         {
             case ControllerScheme.MouseAndKeyboard:
-                //if (XboxInputDetected() && KeyboardInputNotDetected() && (Input.anyKeyDown || Input.anyKey))
                 if(IsControllerConnected())
                 {
                     Debug.Log("ControlMode: XBOX CONTROLLER DETECTED");
@@ -97,7 +95,6 @@ public class ControllerMode : MonoBehaviour
                 break;
 
             case ControllerScheme.XboxController:
-                //if (KeyboardInputDetected())
                 if (!IsControllerConnected())
                 {
                     Debug.Log("ControlMode: MOUSE AND KEYBOARD DETECTED");

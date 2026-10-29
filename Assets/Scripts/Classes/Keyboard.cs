@@ -25,7 +25,7 @@ public class Keyboard : MonoBehaviour
     {
         SelectOption(currentIndex);
     }
-    // Update is called once per frame
+
     void Update()
     {
         GetHorizontalInput();
@@ -99,7 +99,6 @@ public class Keyboard : MonoBehaviour
     {
         float input = Input.GetAxisRaw("Submit");
 
-        // Wait until Submit is released
         if (submitPressed)
         {
             if (Mathf.Abs(input) < 0.2f)
@@ -110,7 +109,6 @@ public class Keyboard : MonoBehaviour
             return;
         }
 
-        // Submit can now be pressed again
         if (input > 0.5f)
         {
             keys[currentIndex].PerformAction();
@@ -132,7 +130,6 @@ public class Keyboard : MonoBehaviour
             return;
         }
 
-        // Cancel can now be pressed again
         if (input > 0.5f)
         {
             Backspace();

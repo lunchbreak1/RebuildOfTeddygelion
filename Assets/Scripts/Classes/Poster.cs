@@ -65,9 +65,6 @@ public class Poster : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Called once per frame.
-    /// </summary>
     private void Update()
     {
         if (playerNearby)
@@ -79,10 +76,6 @@ public class Poster : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Called when an object enters the trigger zone.
-    /// </summary>
-    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.transform.parent.GetComponent<WheelchairController>() != null)
@@ -92,10 +85,6 @@ public class Poster : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Called when an object leaves the trigger zone.
-    /// </summary>
-    /// <param name="other"></param>
     private void OnTriggerExit(Collider other)
     {
         if (playerNearby)

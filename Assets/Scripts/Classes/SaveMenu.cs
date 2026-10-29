@@ -23,7 +23,6 @@ public class SaveMenu : MonoBehaviour
 
     WheelchairController wheelchairController;
 
-    // Start is called before the first frame update
     void Start()
     {
         trickManager = FindAnyObjectByType<TrickManager>();

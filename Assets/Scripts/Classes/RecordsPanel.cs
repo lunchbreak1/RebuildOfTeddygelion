@@ -15,7 +15,7 @@ public class RecordsPanel : MonoBehaviour
     List<SaveData> saves;
 
     List<SaveDataRecord> records;
-    // Start is called before the first frame update
+
     void Awake()
     {
         PopulateRecords();

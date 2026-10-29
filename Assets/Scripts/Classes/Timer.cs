@@ -43,7 +43,6 @@ public class Timer : MonoBehaviour
         StartTimerCoroutine();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (countdown > 0)
